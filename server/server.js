@@ -3,10 +3,10 @@ const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
 //!CONTROLLER IMPORTS
-// const authCtrl = require('./controllers/authController')
-// const postCtrl = require('./controllers/postController')
-// const commentCtrl = require('./controllers/commentController')
-// const votesCtrl = require('./controllers/votesController')
+const authCtrl = require('./controllers/authController')
+const postCtrl = require('./controllers/postController')
+const commentCtrl = require('./controllers/commentController')
+const votesCtrl = require('./controllers/votesController')
 //!------------------
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
@@ -22,14 +22,14 @@ app.use(session({
 }))
 
 //! DATABASE & SERVER
-// massive(CONNECTION_STRING).then(db => {
-//   app.set('db', db)
-//   console.log('DB connected')
-// })
+massive(CONNECTION_STRING).then(db => {
+  app.set('db', db)
+  console.log('DB connected')
+  app.listen(SERVER_PORT, () =>
+  console.log(`${SERVER_PORT} barrels of beer in all!`)
+  )
+})
 
-app.listen(SERVER_PORT, () =>
-console.log(`This server port is so ${SERVER_PORT}`)
-)
 
 //! AUTH ENDPOINTS
 // app.post('/auth/register', authCtrl.register)

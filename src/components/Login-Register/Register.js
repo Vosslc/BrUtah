@@ -46,9 +46,9 @@ class Register extends React.Component {
   //! AXIOS CALLS
   register = () => {
     if (this.state.password1 === this.state.password2) {
-      const { name, email, password1: password } = this.state;
+      const { username, password1: password } = this.state;
       axios
-        .post("/auth/register", { name, email, password })
+        .post("/auth/register", { username,password })
         .then(res => {
           console.log(res.data);
           this.props.updateUserInfo(res.data.user);

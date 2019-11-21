@@ -1,6 +1,9 @@
 import React from "react";
+import { updateUserInfo } from "../../ducks/reducer";
+import { connect } from "react-redux";
 // import { BrowserRouter as Router } from "react-router-dom";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -26,13 +29,44 @@ import "./Register.css";
 
 class Register extends React.Component {
   state = {
-    collapseID: ""
+    collapseID: "",
+    // email: "", may add this later
+    username: "",
+    password1: "",
+    password2: ""
   };
 
+  //! METHODS
+  handleChange = (key, value) => {
+    this.setState({
+      [key]: value
+    });
+  };
+
+  //! AXIOS CALLS
+  register = () => {
+    if (this.state.password1 === this.state.password2) {
+      const { name, email, password1: password } = this.state;
+      axios
+        .post("/auth/register", { name, email, password })
+        .then(res => {
+          console.log(res.data);
+          this.props.updateUserInfo(res.data.user);
+        })
+        .catch(err => {
+          console.log(err.response.data.message);
+        });
+    } else {
+      console.log("passwords dont match");
+    }
+  };
+
+  //! REACTSTRAP MDB-REACT
   toggleCollapse = collapseID => () =>
     this.setState(prevState => ({
       collapseID: prevState.collapseID !== collapseID ? collapseID : ""
     }));
+  //! ******
 
   render() {
     const overlay = (
@@ -44,56 +78,57 @@ class Register extends React.Component {
     );
     return (
       <div id="classicformpage">
-        
-          <div>
-            <MDBNavbar dark expand="md" fixed="top">
-              <MDBContainer>
-                <MDBNavbarBrand>
-                  <strong className="white-text">BreUtah</strong>
-                </MDBNavbarBrand>
-                <MDBNavbarToggler
-                  onClick={this.toggleCollapse("navbarCollapse")}
-                />
-                <MDBCollapse
-                  id="navbarCollapse"
-                  isOpen={this.state.collapseID}
-                  navbar
-                >
-                  <MDBNavbarNav left>
-                    <MDBNavItem active>
-                      <MDBNavLink to="#!">Home</MDBNavLink>
-                    </MDBNavItem>
-                    <MDBNavItem>
-                      <MDBNavLink to="#!">Link</MDBNavLink>
-                    </MDBNavItem>
-                    <MDBNavItem>
-                      <MDBNavLink to="#!">Profile</MDBNavLink>
-                    </MDBNavItem>
-                  </MDBNavbarNav>
-                  <MDBNavbarNav right>
-                    <MDBNavItem>
-                      <MDBFormInline waves>
-                        <div className="md-form my-0">
-                          <input
-                            className="form-control mr-sm-2"
-                            type="text"
-                            placeholder="Search"
-                            aria-label="Search"
-                          />
-                        </div>
-                      </MDBFormInline>
-                    </MDBNavItem>
-                  </MDBNavbarNav>
-                </MDBCollapse>
-              </MDBContainer>
-            </MDBNavbar>
-            {this.state.collapseID && overlay}
-          </div>
-        
+        <div>
+          {/* NAVBAR */}
+          <MDBNavbar dark expand="md" fixed="top">
+            <MDBContainer>
+              <MDBNavbarBrand>
+                <strong className="white-text">BreUtah</strong>
+              </MDBNavbarBrand>
+              <MDBNavbarToggler
+                onClick={this.toggleCollapse("navbarCollapse")}
+              />
+              <MDBCollapse
+                id="navbarCollapse"
+                isOpen={this.state.collapseID}
+                navbar
+              >
+                <MDBNavbarNav left>
+                  <MDBNavItem active>
+                    <MDBNavLink to="#!">Home</MDBNavLink>
+                  </MDBNavItem>
+                  <MDBNavItem>
+                    <MDBNavLink to="#!">Link</MDBNavLink>
+                  </MDBNavItem>
+                  <MDBNavItem>
+                    <MDBNavLink to="#!">Profile</MDBNavLink>
+                  </MDBNavItem>
+                </MDBNavbarNav>
+                <MDBNavbarNav right>
+                  <MDBNavItem>
+                    <MDBFormInline waves>
+                      <div className="md-form my-0">
+                        <input
+                          className="form-control mr-sm-2"
+                          type="text"
+                          placeholder="Search"
+                          aria-label="Search"
+                        />
+                      </div>
+                    </MDBFormInline>
+                  </MDBNavItem>
+                </MDBNavbarNav>
+              </MDBCollapse>
+            </MDBContainer>
+          </MDBNavbar>
+          {this.state.collapseID && overlay}
+          {/* NAVBAR END */}
+        </div>
         <MDBView>
           <MDBMask className="d-flex justify-content-center align-items-center gradient">
             <MDBContainer>
               <MDBRow>
+                {/* SIGN IN HERE SECTION */}
                 <MDBAnimation
                   type="fadeInLeft"
                   // type="fadeInRight"
@@ -101,7 +136,7 @@ class Register extends React.Component {
                   className="signInBtn white-text text-center text-md-left col-md-6 mt-xl-5 mb-5"
                 >
                   <h1 className="h1-responsive font-weight-bold">
-                    Already have a Account? Sign In Bellow
+                    Already have a Account? Sign In Below
                   </h1>
                   <hr className="hr-light" />
                   <h6 className="mb-4">
@@ -115,7 +150,8 @@ class Register extends React.Component {
                     </MDBBtn>
                   </Link>
                 </MDBAnimation>
-
+                {/* END: SIGN IN HERE SECTION */}
+                {/* REGISTER INPUT FILED */}
                 <MDBCol md="6" xl="5" className="mb-4">
                   <MDBAnimation
                     type="fadeInRight"
@@ -135,6 +171,11 @@ class Register extends React.Component {
                             iconClass="white-text"
                             label="Username"
                             icon="user"
+                            value={this.state.username}
+                            onChange={e =>
+                              this.handleChange("username", e.target.value)
+                            }
+                            type="text"
                           />
                           {/* <MDBInput
                           className="white-text"
@@ -150,6 +191,10 @@ class Register extends React.Component {
                             icon="lock"
                             type="password"
                             autoComplete="off"
+                            value={this.state.password1}
+                            onChange={e =>
+                              this.handleChange("password1", e.target.value)
+                            }
                           />
                           <MDBInput
                             className="white-text"
@@ -158,10 +203,14 @@ class Register extends React.Component {
                             icon="lock"
                             type="password"
                             autoComplete="off"
+                            value={this.state.password2}
+                            onChange={e =>
+                              this.handleChange("password2", e.target.value)
+                            }
                           />
                         </form>
                         <div className="text-center mt-4 black-text">
-                          <MDBBtn color="indigo">Sign Up</MDBBtn>
+                          <MDBBtn onClick={this.register} color="indigo">Sign Up</MDBBtn>
                           <hr className="hr-light" />
                           <div className="text-center d-flex justify-content-center white-label">
                             <a href="#!" className="p-2 m-2">
@@ -191,6 +240,7 @@ class Register extends React.Component {
                     </MDBCard>
                   </MDBAnimation>
                 </MDBCol>
+                {/* END: REGISTER INPUT FILED */}
               </MDBRow>
             </MDBContainer>
           </MDBMask>
@@ -200,4 +250,11 @@ class Register extends React.Component {
   }
 }
 
-export default Register;
+function mapStateToProps(reduxState) {
+  return reduxState;
+}
+const mapDispatchToProps = {
+  updateUserInfo
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

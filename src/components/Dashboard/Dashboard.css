@@ -1,0 +1,74 @@
+#dashboardPage .view {
+  /* background-image: url("../../images/cellar.jpg"); */
+  background-image: url("../../images/brewKettels.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+}
+
+#dashboardPage .gradient {
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.7),
+    rgba(72, 15, 144, 0.4) 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    45deg,
+    from(rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%)
+  );
+  background: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.7),
+    rgba(72, 15, 144, 0.4) 100%
+  );
+}
+
+#dashboardPage .card {
+  background-color: rgba(126, 123, 215, 0.568);
+  /* background-color: rgba(231, 14, 14, 0.616); */
+}
+
+#dashboardPage h6 {
+  line-height: 1.7;
+}
+
+#dashboardPage .navbar {
+  transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+}
+
+#dashboardPage .top-nav-collapse {
+  background: #424f95 !important;
+}
+
+@media (max-width: 768px) {
+  #dashboardPage .navbar:not(.top-nav-collapse) {
+    background: #424f95 !important;
+  }
+  h6 {
+    display: none;
+  }
+  hr {
+    display: none;
+  }
+  .h1-responsive {
+    display: none;
+  }
+  .signInBtn {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+#dashboardPage label {
+  color: rgb(255, 255, 255) !important;
+  font-weight: bolder;
+  /* background-color: none !important; */
+
+  /* font-family: Arial; */
+}
+
+.md-form.md-outline .form-control {
+  padding: 1.25rem 1rem;
+}

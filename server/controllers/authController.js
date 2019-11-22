@@ -29,7 +29,13 @@ module.exports = {
       return res.status(401).send({message: 'Password incorrect'})
     }
     req.session.user = {user_id, username, profile_img}
-    res.status(200).send({message: 'Logged In', user: req.session.user})
+    
+    res.status(200).send({message: {icon: 'success',
+    title: 'Logged in!',
+    showConfirmButton: false,
+    // background: 'black',
+    timer: 1500}, user: req.session.user})
+    // res.status(200).send({message: 'Logged In', user: req.session.user})
   },
   // logout: (req, res) => {
   //   req.session.destroy()

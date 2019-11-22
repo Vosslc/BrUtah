@@ -160,7 +160,9 @@ class Login extends React.Component {
                           />
                         </form>
                         <div className="text-center mt-4 black-text">
-                          <MDBBtn onClick={this.login} color="indigo">Sign In</MDBBtn>
+                          <MDBBtn onClick={this.login} color="indigo">
+                            Sign In
+                          </MDBBtn>
                           <hr className="hr-light" />
                           <div className="text-center d-flex justify-content-center white-label">
                             <a href="#!" className="p-2 m-2">

@@ -37,3 +37,16 @@ comment_content TEXT,
 user_id INT REFERENCES users(user_id),
 post_id INT REFERENCES post(post_id)
 );
+
+
+
+
+-- select * from user_hash;
+-- DELETE FROM users
+-- WHERE user_id >= 14;
+
+--  DELETE FROM user_hash
+-- WHERE user_id >= 17;
+
+-- select * from users;
+-- select * from user_hash; 

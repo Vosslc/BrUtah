@@ -26,6 +26,7 @@ import {
   MDBAnimation
 } from "mdbreact";
 import "./Register.css";
+import Swal from "sweetalert2";
 
 class Register extends React.Component {
   state = {
@@ -48,16 +49,19 @@ class Register extends React.Component {
     if (this.state.password1 === this.state.password2) {
       const { username, password1: password } = this.state;
       axios
-        .post("/auth/register", { username,password })
+        .post("/auth/register", { username, password })
         .then(res => {
           console.log(res.data);
           this.props.updateUserInfo(res.data.user);
+          Swal.fire(res.data.message);
+          this.props.history.push('/')
         })
         .catch(err => {
           console.log(err.response.data.message);
+          Swal.fire(err.response.data.message);
         });
     } else {
-      console.log("passwords dont match");
+      Swal.fire('Passwords dont match!');
     }
   };
 
@@ -210,7 +214,9 @@ class Register extends React.Component {
                           />
                         </form>
                         <div className="text-center mt-4 black-text">
-                          <MDBBtn onClick={this.register} color="indigo">Sign Up</MDBBtn>
+                          <MDBBtn onClick={this.register} color="indigo">
+                            Sign Up
+                          </MDBBtn>
                           <hr className="hr-light" />
                           <div className="text-center d-flex justify-content-center white-label">
                             <a href="#!" className="p-2 m-2">

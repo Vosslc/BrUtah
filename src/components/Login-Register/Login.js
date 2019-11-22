@@ -1,6 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
+import { updateUserInfo } from "../../ducks/reducer";
 // import { BrowserRouter as Router } from "react-router-dom";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -23,10 +26,31 @@ import {
   MDBAnimation
 } from "mdbreact";
 import "./Login.css";
+import Swal from "sweetalert2";
 
 class Login extends React.Component {
   state = {
-    collapseID: ""
+    collapseID: "",
+    username: "",
+    password: ""
+  };
+
+  handleChange = (key, value) => {
+    this.setState({ [key]: value });
+  };
+
+  login = () => {
+    const { username, password } = this.state;
+    axios
+      .post("/auth/login", { username, password })
+      .then(res => {
+        this.props.updateUserInfo(res.data.user);
+        Swal.fire(res.data.message);
+        this.props.history.push("/dashboard");
+      })
+      .catch(err => {
+        Swal.fire(err.response.data.message);
+      });
   };
 
   toggleCollapse = collapseID => () =>
@@ -48,7 +72,7 @@ class Login extends React.Component {
           <MDBNavbar dark expand="md" fixed="top">
             <MDBContainer>
               <MDBNavbarBrand>
-                <strong className="white-text">MDB</strong>
+                <strong className="white-text">BreUtah</strong>
               </MDBNavbarBrand>
               <MDBNavbarToggler
                 onClick={this.toggleCollapse("navbarCollapse")}
@@ -106,29 +130,37 @@ class Login extends React.Component {
                         </h3>
                         <hr className="hr-light" />
                         <form action="">
-                        <MDBInput
-                          className="white-text"
-                          iconClass="white-text"
-                          label="Username"
-                          icon="user"
-                        />
-                        {/* <MDBInput
+                          <MDBInput
+                            className="white-text"
+                            iconClass="white-text"
+                            label="Username"
+                            icon="user"
+                            onChange={e =>
+                              this.handleChange("username", e.target.value)
+                            }
+                            value={this.state.username}
+                          />
+                          {/* <MDBInput
                           className="white-text"
                           iconClass="white-text"
                           label="Your email"
                           icon="envelope"
                         /> */}
-                        <MDBInput
-                          className="white-text"
-                          iconClass="white-text"
-                          label="Your password"
-                          icon="lock"
-                          type="password"
-                          autoComplete="on"
-                        />
+                          <MDBInput
+                            className="white-text"
+                            iconClass="white-text"
+                            label="Your password"
+                            icon="lock"
+                            type="password"
+                            autoComplete="on"
+                            onChange={e =>
+                              this.handleChange("password", e.target.value)
+                            }
+                            value={this.state.password}
+                          />
                         </form>
                         <div className="text-center mt-4 black-text">
-                          <MDBBtn color="indigo">Sign In</MDBBtn>
+                          <MDBBtn onClick={this.login} color="indigo">Sign In</MDBBtn>
                           <hr className="hr-light" />
                           <div className="text-center d-flex justify-content-center white-label">
                             <a href="#!" className="p-2 m-2">
@@ -188,7 +220,7 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default connect(null, { updateUserInfo })(Login);
 
 // import React, { Component } from "react";
 // import { Link } from "react-router-dom";

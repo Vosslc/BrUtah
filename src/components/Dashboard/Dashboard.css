@@ -25,9 +25,39 @@
   );
 }
 
+.postContent {
+  overflow: scroll;
+  position: relative;
+  height: 100vh;
+  margin-top: 75px;
+}
+
 #dashboardPage .card {
-  background-color: rgba(126, 123, 215, 0.568);
+  /* background-color: rgba(126, 123, 215, 0.568); */
   /* background-color: rgba(231, 14, 14, 0.616); */
+  height: 150px;
+  width: 100%;
+  background-color: #ffffff;
+}
+p {
+  display: block;
+  display: -webkit-box;
+  max-width: 100%;
+  height: 60px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#dashboardPage .card-footer {
+  width: 100%;
+  background-color: #ffffff;
+  color: red !important;
+  font-size: larger;
 }
 
 #dashboardPage h6 {
@@ -36,15 +66,16 @@
 
 #dashboardPage .navbar {
   transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+  background-color: rgba(126, 64, 35, 0.486);
 }
 
 #dashboardPage .top-nav-collapse {
-  background: #424f95 !important;
+  background: rgba(126, 64, 35, 0.486) !important;
 }
 
 @media (max-width: 768px) {
   #dashboardPage .navbar:not(.top-nav-collapse) {
-    background: #424f95 !important;
+    background: rgba(126, 64, 35, 0.486) !important;
   }
   h6 {
     display: none;
@@ -72,3 +103,6 @@
 .md-form.md-outline .form-control {
   padding: 1.25rem 1rem;
 }
+/* .card .card-body .card-text{
+  text-overflow: ellipsis !important;
+} */

@@ -63,13 +63,13 @@ class CreatePost extends React.Component {
               >
                 <MDBNavbarNav left>
                   <MDBNavItem active>
-                    <MDBNavLink to="#!">Home</MDBNavLink>
-                  </MDBNavItem>
-                  <MDBNavItem>
-                    <MDBNavLink to="#!">Link</MDBNavLink>
+                    <MDBNavLink to="/dashboard">Home</MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
                     <MDBNavLink to="#!">Profile</MDBNavLink>
+                  </MDBNavItem>
+                  <MDBNavItem>
+                    <MDBNavLink to="#!">SignOut</MDBNavLink>
                   </MDBNavItem>
                 </MDBNavbarNav>
                 <MDBNavbarNav right>
@@ -113,6 +113,9 @@ class CreatePost extends React.Component {
                         </h3>
                         <hr className="hr-light" />
                         <form>
+                          {/* <MDBIcon icon="arrow-alt-circle-up" />
+                        <br/>
+                        <MDBIcon icon="arrow-alt-circle-down" /> */}
                           <MDBInput
                             className="white-text "
                             iconClass="white-text"
@@ -123,7 +126,9 @@ class CreatePost extends React.Component {
                           />
                         </form>
                         <div className="text-center mt-4 black-text">
-                          <MDBBtn color="indigo">Post</MDBBtn>
+                          <MDBNavLink to="/dashboard">
+                            <MDBBtn color="indigo">Post</MDBBtn>
+                          </MDBNavLink>
                           <hr className="hr-light" />
                           <div className="text-center d-flex justify-content-center white-label">
                             <a href="#!" className="p-2 m-2">

@@ -23,7 +23,10 @@ import {
   MDBCardBody,
   MDBInput,
   MDBFormInline,
-  MDBAnimation
+  MDBAnimation,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardFooter
 } from "mdbreact";
 import "./Dashboard.css";
 // import Swal from "sweetalert2";
@@ -66,10 +69,10 @@ class Dashboard extends React.Component {
               >
                 <MDBNavbarNav left>
                   <MDBNavItem active>
-                    <MDBNavLink to="#!">Home</MDBNavLink>
+                    <MDBNavLink to="/Dashboard">Home</MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to="#!">Link</MDBNavLink>
+                    <MDBNavLink to="createpost">Create A Post</MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
                     <MDBNavLink to="#!">Profile</MDBNavLink>
@@ -97,20 +100,69 @@ class Dashboard extends React.Component {
 
         <MDBView>
           {/* <MDBMask className="d-flex justify-content-center align-items-center gradient"> */}
-          <MDBMask className="flex-center" overlay="red-slight">
-            <MDBContainer>
-              <MDBRow>
-                <MDBCol>
-                  <MDBAnimation
-                    // type="fadeInRight"
-                    type="fadeInLeft"
-                    delay=".3s"
-                  >
-                    
-                  </MDBAnimation>
-                </MDBCol>
-              </MDBRow>
-            </MDBContainer>
+          <MDBMask
+            className="flex-center d-flex flex-column"
+            overlay="red-slight"
+          >
+            <div className="postContent">
+              <MDBBtn color="elegant">Create Post</MDBBtn>
+              <MDBContainer>
+                <MDBRow>
+                  <MDBCol>
+                    <MDBAnimation
+                      // type="fadeInRight"
+                      type="fadeInLeft"
+                      delay=".3s"
+                    ></MDBAnimation>
+
+                    {/* THIS IS JUST DUMMIE DATA */}
+                    <MDBCard className="shadow-box-example hoverable">
+                      <MDBCardBody>
+                        <MDBCardTitle tag="h5">
+                          Thoughts on cold Crashing beers?
+                        </MDBCardTitle>
+                        <MDBCardText>
+                          This is a wider panel with supporting text below as a
+                          natural lead-in to additional content. This panel has
+                          even longer content than the first to show that equal
+                          height action. This is a wider panel with supporting
+                          text below as a natural lead-in to additional content.
+                          This panel has even longer content than the first to
+                          show that equal height action. This is a wider panel
+                          with supporting text below as a natural lead-in to
+                          additional content. This panel has even longer content
+                          than the first to show that equal height action. This
+                          is a wider panel with supporting text below as a
+                          natural lead-in to additional content. This panel has
+                          even longer content than the first to show that equal
+                          height action. This is a wider panel with supporting
+                          text below as a natural lead-in to additional content.
+                          This panel has even longer content than the first to
+                          show that equal height action. This is a wider panel
+                          with supporting text below as a natural lead-in to
+                          additional content. This panel has even longer content
+                          than the first to show that equal height action. This
+                          is a wider panel with supporting text below as a
+                          natural lead-in to additional content. This panel has
+                          even longer content than the first to show that equal
+                          height action. This is a wider panel with supporting
+                          text below as a natural lead-in to additional content.
+                          This panel has even longer content than the first to
+                          show that equal height action. This is a wider panel
+                          with supporting text below as a natural lead-in to
+                          additional content. This panel has even longer content
+                          than the first to show that equal
+                        </MDBCardText>
+                      </MDBCardBody>
+                    </MDBCard>
+                    <MDBCardFooter small muted>
+                      Last updated 3 mins ago
+                    </MDBCardFooter>
+                    {/* DUMMIE END */}
+                  </MDBCol>
+                </MDBRow>
+              </MDBContainer>
+            </div>
           </MDBMask>
         </MDBView>
       </div>

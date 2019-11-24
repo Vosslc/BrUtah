@@ -25,7 +25,7 @@
 }
 
 #CreatePost .card {
-  background-color: rgba(126, 123, 215, 0.568);
+  background-color: rgba(126, 123, 215, 0.692);
   /* background-color: rgba(231, 14, 14, 0.616); */
 }
 
@@ -62,7 +62,6 @@
 
 #CreatePost label {
   color: rgb(255, 255, 255) !important;
-  font-weight: bolder;
   /* background-color: none !important; */
 
   /* font-family: Arial; */
@@ -70,4 +69,12 @@
 
 .md-form.md-outline .form-control {
   padding: 1.25rem 1rem;
+}
+
+.md-form.md-outline label.active{
+  background-color: transparent !important;
+  padding-bottom: 2rem;
+  text-decoration: underline;
+  font-weight: bolder;
+  
 }

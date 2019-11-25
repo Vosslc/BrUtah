@@ -53,7 +53,7 @@ class Login extends React.Component {
   render() {
     return (
       <div id="classicformpage">
-        <MDBView>
+        <MDBView className="Login">
           <MDBMask className="d-flex justify-content-center align-items-center gradient">
             <MDBContainer>
               <MDBRow>

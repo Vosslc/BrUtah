@@ -1,64 +1,13 @@
-#CreatePost .view {
-  background-image: url("../../images/brewKettels.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  height: 100vh;
-}
-
-#CreatePost .gradient {
-  background: -webkit-linear-gradient(
-    45deg,
-    rgba(0, 0, 0, 0.7),
-    rgba(72, 15, 144, 0.4) 100%
-  );
-  background: -webkit-gradient(
-    linear,
-    45deg,
-    from(rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%)
-  );
-  background: linear-gradient(
-    45deg,
-    rgba(0, 0, 0, 0.7),
-    rgba(72, 15, 144, 0.4) 100%
-  );
-}
-
 #CreatePost .card {
-  background-color: rgba(126, 123, 215, 0.692);
-  /* background-color: rgba(231, 14, 14, 0.616); */
+  background-color: rgba(126, 123, 215, 0.322);
+  height: auto;
+  /* background-color: rgba(126, 123, 215, 0.692); */
+  /* background-color: rgba(235, 118, 118, 0.198); */
 }
 
-#CreatePost h6 {
+/* #CreatePost h6 {
   line-height: 1.7;
-}
-
-#CreatePost .navbar {
-  transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
-}
-
-#CreatePost .top-nav-collapse {
-  background: #424f95 !important;
-}
-
-@media (max-width: 768px) {
-  #CreatePost .navbar:not(.top-nav-collapse) {
-    background: #424f95 !important;
-  }
-  h6 {
-    display: none;
-  }
-  hr {
-    display: none;
-  }
-  .h1-responsive {
-    display: none;
-  }
-  .signInBtn {
-    position: absolute;
-    bottom: 0;
-  }
-}
+} */
 
 #CreatePost label {
   color: rgb(255, 255, 255) !important;
@@ -71,10 +20,10 @@
   padding: 1.25rem 1rem;
 }
 
-.md-form.md-outline label.active{
+.md-form.md-outline label.active {
   background-color: transparent !important;
   padding-bottom: 2rem;
   text-decoration: underline;
-  font-weight: bolder;
-  
+  /* font-weight: bolder; */
+  font-size: medium;
 }

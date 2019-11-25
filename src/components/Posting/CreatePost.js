@@ -35,7 +35,7 @@ class CreatePost extends React.Component {
                     type="fadeInLeft"
                     delay=".3s"
                   >
-                    <MDBCard id="classic-card">
+                    <MDBCard>
                       <MDBCardBody className="white-text">
                         <h3 className="text-center">
                           <MDBIcon /> Create a post

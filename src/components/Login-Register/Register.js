@@ -67,7 +67,7 @@ class Register extends React.Component {
   render() {
     return (
       <div id="classicformpage">
-        <MDBView>
+        <MDBView className="Register">
           <MDBMask className="d-flex justify-content-center align-items-center gradient">
             <MDBContainer>
               <MDBRow>

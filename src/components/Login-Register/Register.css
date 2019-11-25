@@ -6,7 +6,7 @@
   height: 100vh;
 }
 
-#classicformpage .gradient {
+/* #classicformpage .gradient {
   background: -webkit-linear-gradient(
     45deg,
     rgba(0, 0, 0, 0.7),
@@ -22,39 +22,40 @@
     rgba(0, 0, 0, 0.7),
     rgba(72, 15, 144, 0.4) 100%
   );
-}
+} */
 
-#classicformpage .card {
+#classic-card {
   background-color: rgba(126, 123, 215, 0.2);
+  height: auto;
 }
 
 #classicformpage h6 {
   line-height: 1.7;
 }
 
-#classicformpage .navbar {
+/* #classicformpage .navbar {
   transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
-}
+} */
 
-#classicformpage .top-nav-collapse {
+/* #classicformpage .top-nav-collapse {
   background: #424f95 !important;
-}
+} */
 
+/* !KEEP FOR LOG/REG MOBILE */
 @media (max-width: 768px) {
   #classicformpage .navbar:not(.top-nav-collapse) {
-    background: #424f95 !important;
-    
+    /* background: #424f95 !important; */
   }
   h6 {
     display: none;
   }
-  hr{
+  hr {
     display: none;
   }
-  .h1-responsive{
+  .h1-responsive {
     display: none;
   }
-  .signInBtn{
+  .signInBtn {
     position: absolute;
     bottom: 0;
   }

@@ -57,7 +57,7 @@
 
 @media (max-width: 768px) {
   #HeaderPage .navbar:not(.top-nav-collapse) {
-    background: rgba(73, 15, 144, 0.87) !important;
+    background: rgba(126, 64, 35, 0.89) !important;
   }
   h6 {
     display: none;

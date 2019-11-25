@@ -45,6 +45,13 @@ class CreatePost extends React.Component {
                           {/* <MDBIcon icon="arrow-alt-circle-up" />
                         <br/>
                         <MDBIcon icon="arrow-alt-circle-down" /> */}
+
+                          <input
+                            type="text"
+                            id="example3"
+                            className="form-control form-control-sm"
+                            placeholder="Title"
+                          />
                           <MDBInput
                             className="white-text "
                             iconClass="white-text"

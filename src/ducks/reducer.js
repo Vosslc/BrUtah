@@ -1,7 +1,10 @@
 const initialState = {
   username: '',
   user_id: '',
-  profile_img: ''
+  profile_img: '',
+  //!CreatePost
+  postInput: '',
+  postTitle: ''
 }
 
 // ACTION CONSTANTS
@@ -15,10 +18,12 @@ export function updateUserInfo(userObj) {
   }
 }
 
-export default function reducer(state = initialState, action) {
+function reducer(state = initialState, action) {
   switch(action.type) {
     case UPDATE_USER_INFO:
       return {...state, ...action.payload}
     default: return state
   }
 }
+
+export default reducer

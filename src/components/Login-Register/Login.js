@@ -17,7 +17,7 @@ import {
   MDBInput,
   MDBAnimation
 } from "mdbreact";
-import "./Login.css";
+
 import Swal from "sweetalert2";
 
 class Login extends React.Component {

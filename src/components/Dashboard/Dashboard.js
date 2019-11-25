@@ -5,18 +5,8 @@ import { updateUserInfo } from "../../ducks/reducer";
 // import { Link } from "react-router-dom";
 // import axios from "axios";
 import {
-  // MDBMask,
-  // MDBRow,
-  // MDBCol,
-  MDBBtn,
+  // MDBBtn,
   MDBView
-  // MDBContainer,
-  // MDBCard,
-  // MDBCardBody,
-  // MDBAnimation,
-  // MDBCardTitle,
-  // MDBCardText,
-  // MDBCardFooter
 } from "mdbreact";
 import Post from "../Posting/Post";
 import "../Posting/Post.css";

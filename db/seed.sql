@@ -50,3 +50,4 @@ post_id INT REFERENCES post(post_id)
 
 -- select * from users;
 -- select * from user_hash; 
+

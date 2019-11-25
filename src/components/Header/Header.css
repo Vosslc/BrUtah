@@ -1,0 +1,108 @@
+#HeaderPage .view {
+  /* background-image: url("../../images/cellar.jpg"); */
+  background-image: url("../../images/brewKettels.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+}
+
+#HeaderPage .gradient {
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.7),
+    rgba(72, 15, 144, 0.4) 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    45deg,
+    from(rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%)
+  );
+  background: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.7),
+    rgba(72, 15, 144, 0.4) 100%
+  );
+}
+
+.postContent {
+  overflow: scroll;
+  position: relative;
+  height: 100vh;
+  margin-top: 75px;
+}
+
+#HeaderPage .card {
+  /* background-color: rgba(126, 123, 215, 0.568); */
+  /* background-color: rgba(231, 14, 14, 0.616); */
+  height: 150px;
+  width: 100%;
+  background-color: #ffffff;
+}
+p {
+  display: block;
+  display: -webkit-box;
+  max-width: 100%;
+  height: 60px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#HeaderPage .card-footer {
+  width: 100%;
+  background-color: #ffffff;
+  color: red !important;
+  font-size: larger;
+}
+
+#HeaderPage h6 {
+  line-height: 1.7;
+}
+
+#HeaderPage .navbar {
+  transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+  background-color: rgba(126, 64, 35, 0.486);
+}
+
+#HeaderPage .top-nav-collapse {
+  background: rgba(126, 64, 35, 0.486) !important;
+}
+
+@media (max-width: 768px) {
+  #HeaderPage .navbar:not(.top-nav-collapse) {
+    background: rgba(126, 64, 35, 0.486) !important;
+  }
+  h6 {
+    display: none;
+  }
+  hr {
+    display: none;
+  }
+  .h1-responsive {
+    display: none;
+  }
+  .signInBtn {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+#HeaderPage label {
+  color: rgb(255, 255, 255) !important;
+  font-weight: bolder;
+  /* background-color: none !important; */
+
+  /* font-family: Arial; */
+}
+
+.md-form.md-outline .form-control {
+  padding: 1.25rem 1rem;
+}
+/* .card .card-body .card-text{
+  text-overflow: ellipsis !important;
+} */

@@ -2,13 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { updateUserInfo } from "../../ducks/reducer";
 import {
-  MDBNavbar,
-  MDBNavbarBrand,
-  MDBNavbarNav,
-  MDBNavItem,
   MDBNavLink,
-  MDBNavbarToggler,
-  MDBCollapse,
   MDBMask,
   MDBRow,
   MDBCol,
@@ -19,79 +13,14 @@ import {
   MDBCard,
   MDBCardBody,
   MDBInput,
-  MDBFormInline,
   MDBAnimation
 } from "mdbreact";
 import "./CreatePost.css";
 
 class CreatePost extends React.Component {
-  state = {};
-
-  handleChange = (key, value) => {
-    this.setState({ [key]: value });
-  };
-
-  toggleCollapse = collapseID => () =>
-    this.setState(prevState => ({
-      collapseID: prevState.collapseID !== collapseID ? collapseID : ""
-    }));
-
   render() {
-    const overlay = (
-      <div
-        id="sidenav-overlay"
-        style={{ backgroundColor: "transparent" }}
-        onClick={this.toggleCollapse("navbarCollapse")}
-      />
-    );
-
     return (
       <div id="CreatePost">
-        <div>
-          <MDBNavbar dark expand="md" fixed="top">
-            <MDBContainer>
-              <MDBNavbarBrand>
-                <strong className="white-text">BreUtah</strong>
-              </MDBNavbarBrand>
-              <MDBNavbarToggler
-                onClick={this.toggleCollapse("navbarCollapse")}
-              />
-              <MDBCollapse
-                id="navbarCollapse"
-                isOpen={this.state.collapseID}
-                navbar
-              >
-                <MDBNavbarNav left>
-                  <MDBNavItem active>
-                    <MDBNavLink to="/dashboard">Home</MDBNavLink>
-                  </MDBNavItem>
-                  <MDBNavItem>
-                    <MDBNavLink to="#!">Profile</MDBNavLink>
-                  </MDBNavItem>
-                  <MDBNavItem>
-                    <MDBNavLink to="#!">SignOut</MDBNavLink>
-                  </MDBNavItem>
-                </MDBNavbarNav>
-                <MDBNavbarNav right>
-                  <MDBNavItem>
-                    <MDBFormInline waves>
-                      <div className="md-form my-0">
-                        <input
-                          className="form-control mr-sm-2"
-                          type="text"
-                          placeholder="Search"
-                          aria-label="Search"
-                        />
-                      </div>
-                    </MDBFormInline>
-                  </MDBNavItem>
-                </MDBNavbarNav>
-              </MDBCollapse>
-            </MDBContainer>
-          </MDBNavbar>
-          {this.state.collapseID && overlay}
-        </div>
-
         <MDBView>
           <MDBMask
             className="d-flex justify-content-center align-items-center"

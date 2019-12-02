@@ -1,8 +1,14 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import { updateUserInfo } from "../../ducks/reducer";
+import { Link } from "react-router-dom";
+import axios from "axios";
 import {
-  MDBNavLink,
+  updateUserInfo,
+  updatePostInput,
+  updatePostTitle
+} from "../../ducks/reducer";
+import {
+  // MDBNavLink,
   MDBMask,
   MDBRow,
   MDBCol,
@@ -17,8 +23,21 @@ import {
 } from "mdbreact";
 import "./CreatePost.css";
 
-class CreatePost extends React.Component {
+class CreatePost extends Component {
+
+  //! ****AXIOS SERVER CALLS**** //
+  addNewPost() {
+    axios.post("/api/post", this.props).then(res => {
+      this.props.history.push("/");
+      this.props.clearState()
+    });
+  }
+
+
   render() {
+    const { updatePostInput, updatePostTitle } = this.props;
+    // console.log(this.props);
+
     return (
       <div id="CreatePost">
         <MDBView>
@@ -51,7 +70,11 @@ class CreatePost extends React.Component {
                             id="example3"
                             className="form-control form-control-sm"
                             placeholder="Title"
+                            value={this.props.createTitle}
+                            name="title"
+                            onChange={e => updatePostTitle(e.target.value)}
                           />
+
                           <MDBInput
                             className="white-text "
                             iconClass="white-text"
@@ -59,12 +82,15 @@ class CreatePost extends React.Component {
                             type="textarea"
                             label="What are your thoughts?"
                             outline
+                            value={this.props.createInput}
+                            name="input"
+                            onChange={e => updatePostInput(e.target.value)}
                           />
                         </form>
                         <div className="text-center mt-4 black-text">
-                          <MDBNavLink to="/dashboard">
+                          <Link to="/dashboard">
                             <MDBBtn color="indigo">Post</MDBBtn>
-                          </MDBNavLink>
+                          </Link>
                           <hr className="hr-light" />
                           <div className="text-center d-flex justify-content-center white-label">
                             <a href="#!" className="p-2 m-2">
@@ -103,4 +129,8 @@ class CreatePost extends React.Component {
   }
 }
 
-export default connect(null, { updateUserInfo })(CreatePost);
+export default connect(null, {
+  updateUserInfo,
+  updatePostInput,
+  updatePostTitle
+})(CreatePost);

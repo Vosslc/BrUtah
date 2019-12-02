@@ -20,14 +20,14 @@ import {
 export class Post extends Component {
   state = {};
 
-  handleChange = (key, value) => {
-    this.setState({ [key]: value });
-  };
+  // handleChange = (key, value) => {
+  //   this.setState({ [key]: value });
+  // };
 
-  toggleCollapse = collapseID => () =>
-    this.setState(prevState => ({
-      collapseID: prevState.collapseID !== collapseID ? collapseID : ""
-    }));
+  // toggleCollapse = collapseID => () =>
+  //   this.setState(prevState => ({
+  //     collapseID: prevState.collapseID !== collapseID ? collapseID : ""
+  //   }));
 
   render() {
     return (
@@ -50,36 +50,7 @@ export class Post extends Component {
                           Thoughts on cold Crashing beers?
                         </MDBCardTitle>
                         <MDBCardText className="postText">
-                          This is a wider panel with supporting text below as a
-                          natural lead-in to additional content. This panel has
-                          even longer content than the first to show that equal
-                          height action. This is a wider panel with supporting
-                          text below as a natural lead-in to additional content.
-                          This panel has even longer content than the first to
-                          show that equal height action. This is a wider panel
-                          with supporting text below as a natural lead-in to
-                          additional content. This panel has even longer content
-                          than the first to show that equal height action. This
-                          is a wider panel with supporting text below as a
-                          natural lead-in to additional content. This panel has
-                          even longer content than the first to show that equal
-                          height action. This is a wider panel with supporting
-                          text below as a natural lead-in to additional content.
-                          This panel has even longer content than the first to
-                          show that equal height action. This is a wider panel
-                          with supporting text below as a natural lead-in to
-                          additional content. This panel has even longer content
-                          than the first to show that equal height action. This
-                          is a wider panel with supporting text below as a
-                          natural lead-in to additional content. This panel has
-                          even longer content than the first to show that equal
-                          height action. This is a wider panel with supporting
-                          text below as a natural lead-in to additional content.
-                          This panel has even longer content than the first to
-                          show that equal height action. This is a wider panel
-                          with supporting text below as a natural lead-in to
-                          additional content. This panel has even longer content
-                          than the first to show that equal
+                        
                         </MDBCardText>
                       </MDBCardBody>
                     </MDBCard>

@@ -10,20 +10,25 @@ const initialState = {
 // ACTION CONSTANTS
 const UPDATE_USER_INFO = "UPDATE_USER_INFO";
 const UPDATE_POST_INPUT = "UPDATE_POST_INPUT";
-const UPDATE_POST_TITLE = "UPDATE_POST_TITLE"
+const UPDATE_POST_TITLE = "UPDATE_POST_TITLE";
+const CLEAR_STATE = "CLEAR_STATE";
 
 function reducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_USER_INFO:
       return { ...state, ...action.payload };
-    default:
-      return state;
+
     //!CREATE_POST
     case UPDATE_POST_INPUT:
       return Object.assign({}, state, { createInput: action.payload });
+
     case UPDATE_POST_TITLE:
       return Object.assign({}, state, { createTitle: action.payload });
 
+    case CLEAR_STATE:
+      return initialState;
+    default:
+      return state;
     //!---------
   }
 }
@@ -46,6 +51,11 @@ export function updatePostTitle(createTitle) {
   return {
     type: UPDATE_POST_TITLE,
     payload: createTitle
+  };
+}
+export function clearState() {
+  return {
+    type: CLEAR_STATE
   };
 }
 //!---------

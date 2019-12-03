@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateUserInfo } from "../../ducks/reducer";
+// import axios from 'axios';
 import {
   MDBMask,
   MDBRow,
@@ -18,7 +19,6 @@ import {
 // import "./Post.css";
 
 export class Post extends Component {
-  state = {};
 
   // handleChange = (key, value) => {
   //   this.setState({ [key]: value });
@@ -50,7 +50,7 @@ export class Post extends Component {
                           Thoughts on cold Crashing beers?
                         </MDBCardTitle>
                         <MDBCardText className="postText">
-                        
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur non distinctio id necessitatibus laudantium, esse animi rerum dignissimos accusantium modi sapiente numquam corrupti accusamus asperiores dolorem! Illo aperiam quis perspiciatis?Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur non distinctio id necessitatibus laudantium, esse animi rerum dignissimos accusantium modi sapiente numquam corrupti accusamus asperiores dolorem! Illo aperiam quis perspiciatis?Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur non distinctio id necessitatibus laudantium, esse animi rerum dignissimos accusantium modi sapiente numquam corrupti accusamus asperiores dolorem! Illo aperiam quis perspiciatis?Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur non distinctio id necessitatibus laudantium, esse animi rerum dignissimos accusantium modi sapiente numquam corrupti accusamus asperiores dolorem! Illo aperiam quis perspiciatis?
                         </MDBCardText>
                       </MDBCardBody>
                     </MDBCard>
@@ -70,26 +70,3 @@ export class Post extends Component {
 }
 
 export default connect(null, { updateUserInfo })(Post);
-
-// import React from 'react'
-// import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBInput  } from 'mdbreact';
-
-// const Post = () => {
-//   return (
-//     <MDBCol>
-//       <MDBCard style={{ width: "22rem" }}>
-//         {/* <MDBCardImage className="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" waves /> */}
-//         <MDBCardBody>
-//           <MDBCardTitle>Card title</MDBCardTitle>
-//           <MDBCardText>
-//             What are your thoughts? Post them here.
-//           </MDBCardText>
-//           <MDBInput type="textarea" label="Post" background />
-//           {/* <MDBBtn href="#">MDBBtn</MDBBtn> */}
-//         </MDBCardBody>
-//       </MDBCard>
-//     </MDBCol>
-//   )
-// }
-
-// export default Post

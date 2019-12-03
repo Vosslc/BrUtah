@@ -1,10 +1,23 @@
 module.exports = {
-  addNewPost(req, res) {
+
+  getAllPost(req, res){
     const db = req.app.get('db')
-    const {title, content} = req.body
+    db.all_post()
+    .then(result => {
+      res.status(200).send(result)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  },
+
+  addNewPost(req, res) {
+    // console.log(req.body)
+    const db = req.app.get('db')
+    const {createTitle, createInput} = req.body
     db.create_new_post({
-      title: title,
-      content: content
+      title: createTitle,
+      content: createInput
     })
     .then(result => {
       res.status(200).send(result)

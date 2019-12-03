@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import axios from "axios";
 import {
-  updateUserInfo,
+  // updateUserInfo,
   updatePostInput,
-  updatePostTitle
+  updatePostTitle,
+  clearState
 } from "../../ducks/reducer";
 import {
   // MDBNavLink,
@@ -24,18 +25,27 @@ import {
 import "./CreatePost.css";
 
 class CreatePost extends Component {
-
   //! ****AXIOS SERVER CALLS**** //
+  componentDidMount() {
+    // console.log(this.props);
+  }
+
   addNewPost() {
+    console.log("hit:addNewPost", this.props);
     axios.post("/api/post", this.props).then(res => {
-      this.props.history.push("/");
-      this.props.clearState()
+      //? this.props.history.push("/dashboard"); <--- should I use this or <Link to="/dashboard">
+      // this.props.history.push("/dashboard");
+      // this.props.createInput(res.data.input)
+      // this.props.createTitle(res.data.title)
+      // this.updatePostTitle(res.data.title)
+      console.log(res)
+      this.props.clearState();
     });
   }
 
-
   render() {
     const { updatePostInput, updatePostTitle } = this.props;
+    // const { createTitle, createInput } = this.props;
     // console.log(this.props);
 
     return (
@@ -88,9 +98,22 @@ class CreatePost extends Component {
                           />
                         </form>
                         <div className="text-center mt-4 black-text">
-                          <Link to="/dashboard">
-                            <MDBBtn color="indigo">Post</MDBBtn>
-                          </Link>
+                          {/* <Link to="/dashboard"> */}
+                          <MDBBtn
+                            onClick={() => this.addNewPost()}
+                            color="indigo"
+                            className="post-btn"
+                          >
+                            Post
+                          </MDBBtn>
+                          <MDBBtn
+                            onClick={() => this.props.clearState()}
+                            color="indigo"
+                            className="cancel"
+                          >
+                            Cancel
+                          </MDBBtn>
+                          {/* </Link> */}
                           <hr className="hr-light" />
                           <div className="text-center d-flex justify-content-center white-label">
                             <a href="#!" className="p-2 m-2">
@@ -129,8 +152,20 @@ class CreatePost extends Component {
   }
 }
 
-export default connect(null, {
-  updateUserInfo,
+function mapStateToProps(state) {
+  const { createInput, createTitle } = state;
+
+  return {
+    createTitle,
+    createInput
+    // updatePostInput,
+    // updatePostTitle
+  };
+}
+
+export default connect(mapStateToProps, {
+  // updateUserInfo,
   updatePostInput,
-  updatePostTitle
+  updatePostTitle,
+  clearState
 })(CreatePost);

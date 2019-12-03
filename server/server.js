@@ -37,7 +37,7 @@ app.post('/auth/login', authCtrl.login)
 // app.delete('/auth/logout', authCtrl.logout)
 
 // //! POST ENDPOINTS
-// app.get('/api/post', postCtrl.getAllPost)
+app.get('/api/post', postCtrl.getAllPost)
 app.post('/api/post', postCtrl.addNewPost)
 // app.delete('/api/post/:id', postCtrl.deletePost)
 // app.put('/api/post/:id', postCtrl.updatePost)

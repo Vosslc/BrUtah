@@ -4,8 +4,17 @@
   background-size: cover;
   background-position: center center;
   height: 100vh;
+  
 }
 
+#dashboardPage .view .mask{
+  overflow: scroll;
+  padding-top: 75px;
+}
+/* #dashboardpage{
+  overflow: scroll;
+
+} */
 .gradient {
   background: -webkit-linear-gradient(
     45deg,
@@ -25,10 +34,10 @@
 }
 
 .postContent {
-  overflow: scroll;
+  /* overflow: scroll; */
   position: relative;
-  height: 100vh;
-  margin-top: 75px;
+  /* margin-top: 75px; */
+  padding-bottom: 25px;
 }
 
 .card {
@@ -36,14 +45,13 @@
   /* background-color: rgba(231, 14, 14, 0.616); */
   /* height: 150px;
   width: 100%; */
-  
 }
 
 /* !NAV BAR */
 
 #HeaderPage .navbar {
   transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
-  background-color: rgba(126, 64, 35, 0.486);
+  background-color: rgba(0, 0, 0, 0.767);
 }
 
 #HeaderPage .top-nav-collapse {
@@ -73,8 +81,6 @@
     bottom: 0;
   }
 }
-
-
 
 /* body {
   margin: 0;

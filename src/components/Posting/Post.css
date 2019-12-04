@@ -13,11 +13,16 @@
   text-overflow: ellipsis;
 }
 
+#postPage {
+  /* margin-top: 75px; */
+}
+
 #postPage .card-footer {
   width: 100%;
   background-color: #ffffff;
   color: red !important;
   font-size: larger;
+  
 }
 
 /* #postPage h6 {

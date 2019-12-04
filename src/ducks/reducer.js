@@ -27,9 +27,9 @@ function reducer(state = initialState, action) {
 
     case CLEAR_STATE:
       return initialState;
-    default:
-      return state;
-    //!---------
+      //!---------
+      default:
+        return state;
   }
 }
 

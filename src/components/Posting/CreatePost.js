@@ -31,15 +31,11 @@ class CreatePost extends Component {
   }
 
   addNewPost() {
-    console.log("hit:addNewPost", this.props);
+    // console.log("hit:addNewPost", this.props);
     axios.post("/api/post", this.props).then(res => {
       //? this.props.history.push("/dashboard"); <--- should I use this or <Link to="/dashboard">
-      // this.props.history.push("/dashboard");
-      // this.props.createInput(res.data.input)
-      // this.props.createTitle(res.data.title)
-      // this.updatePostTitle(res.data.title)
-      console.log(res)
       this.props.clearState();
+      // console.log(res)
     });
   }
 
@@ -53,7 +49,7 @@ class CreatePost extends Component {
         <MDBView>
           <MDBMask
             className="d-flex justify-content-center align-items-center"
-            overlay="red-slight"
+            // overlay="red-slight"
           >
             {/* <MDBMask className="flex-center" overlay="red-slight"> */}
             <MDBContainer>

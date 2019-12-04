@@ -19,7 +19,6 @@ import {
 // import "./Post.css";
 
 export class Post extends Component {
-
   // handleChange = (key, value) => {
   //   this.setState({ [key]: value });
   // };
@@ -32,12 +31,8 @@ export class Post extends Component {
   render() {
     return (
       <div id="postPage">
-        <MDBView>
+        {/* <MDBView> */}
           {/* <MDBMask className="d-flex justify-content-center align-items-center gradient"> */}
-          <MDBMask
-            className="flex-center d-flex flex-column"
-            overlay="red-slight"
-          >
             {/* <MDBBtn color="elegant">Create Post</MDBBtn> */}
             <div className="postContent">
               <MDBContainer>
@@ -47,10 +42,10 @@ export class Post extends Component {
                     <MDBCard className="shadow-box-example hoverable">
                       <MDBCardBody>
                         <MDBCardTitle tag="h5">
-                          Thoughts on cold Crashing beers?
+                          {this.props.el.title}
                         </MDBCardTitle>
                         <MDBCardText className="postText">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur non distinctio id necessitatibus laudantium, esse animi rerum dignissimos accusantium modi sapiente numquam corrupti accusamus asperiores dolorem! Illo aperiam quis perspiciatis?Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur non distinctio id necessitatibus laudantium, esse animi rerum dignissimos accusantium modi sapiente numquam corrupti accusamus asperiores dolorem! Illo aperiam quis perspiciatis?Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur non distinctio id necessitatibus laudantium, esse animi rerum dignissimos accusantium modi sapiente numquam corrupti accusamus asperiores dolorem! Illo aperiam quis perspiciatis?Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur non distinctio id necessitatibus laudantium, esse animi rerum dignissimos accusantium modi sapiente numquam corrupti accusamus asperiores dolorem! Illo aperiam quis perspiciatis?
+                          {this.props.el.content}
                         </MDBCardText>
                       </MDBCardBody>
                     </MDBCard>
@@ -62,8 +57,8 @@ export class Post extends Component {
                 </MDBRow>
               </MDBContainer>
             </div>
-          </MDBMask>
-        </MDBView>
+
+        {/* </MDBView> */}
       </div>
     );
   }

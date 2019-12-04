@@ -6,6 +6,7 @@ import { updateUserInfo } from "../../ducks/reducer";
 import axios from "axios";
 import {
   // MDBBtn,
+  MDBMask,
   MDBView
 } from "mdbreact";
 import Post from "../Posting/Post";
@@ -43,16 +44,18 @@ class Dashboard extends Component {
     return (
       <div id="dashboardPage">
         <MDBView>
-          {/* <MDBBtn className="createBtn" color="elegant">Create Post</MDBBtn> */}
-          {this.state.postList.map((el, index) =>(
-            <Post 
-              el={el}
-              index={index}
-              key={el.id}
-              remove={this.deletePost}
-            />
+          <MDBMask className="d-flex flex-column ">
+            {/* <MDBBtn className="createBtn" color="elegant">Create Post</MDBBtn> */}
+            {this.state.postList.map((el, index) =>(
+              <Post 
+                el={el}
+                index={index}
+                key={el.post_id}
+                remove={this.deletePost}
+              />
 
-          ))}
+            ))}
+          </MDBMask>
         </MDBView>
       </div>
     );

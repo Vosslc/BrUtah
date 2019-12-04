@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import {
   // updateUserInfo,
@@ -67,9 +67,7 @@ class CreatePost extends Component {
                         </h3>
                         <hr className="hr-light" />
                         <form>
-                          {/* <MDBIcon icon="arrow-alt-circle-up" />
-                        <br/>
-                        <MDBIcon icon="arrow-alt-circle-down" /> */}
+                        
 
                           <input
                             type="text"
@@ -94,7 +92,7 @@ class CreatePost extends Component {
                           />
                         </form>
                         <div className="text-center mt-4 black-text">
-                          {/* <Link to="/dashboard"> */}
+                          <Link to="/dashboard">
                           <MDBBtn
                             onClick={() => this.addNewPost()}
                             color="indigo"
@@ -109,7 +107,7 @@ class CreatePost extends Component {
                           >
                             Cancel
                           </MDBBtn>
-                          {/* </Link> */}
+                          </Link>
                           <hr className="hr-light" />
                           <div className="text-center d-flex justify-content-center white-label">
                             <a href="#!" className="p-2 m-2">

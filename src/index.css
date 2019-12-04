@@ -4,10 +4,9 @@
   background-size: cover;
   background-position: center center;
   height: 100vh;
-  
 }
 
-#dashboardPage .view .mask{
+#dashboardPage .view .mask {
   overflow: scroll;
   padding-top: 75px;
 }
@@ -34,9 +33,8 @@
 }
 
 .postContent {
-  /* overflow: scroll; */
+  /* width: 450px; */
   position: relative;
-  /* margin-top: 75px; */
   padding-bottom: 25px;
 }
 
@@ -95,3 +93,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 } */
+
+button {
+  padding: 0;
+  border: none;
+  background: none;
+}

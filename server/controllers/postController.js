@@ -16,10 +16,11 @@ module.exports = {
     // console.log(req.session)
     const db = req.app.get('db')
     const {createTitle, createInput} = req.body
-    // const {user_id} = req.session
+    const {user_id} = req.session.user
     db.create_new_post({
       title: createTitle,
       content: createInput,
+      user_id: user_id
       
     })
     .then(result => {

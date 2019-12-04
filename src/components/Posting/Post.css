@@ -14,15 +14,15 @@
 }
 
 #postPage {
-  /* margin-top: 75px; */
+  /* width: 450px;
+  display: flex;
+  justify-content: center; */
 }
 
 #postPage .card-footer {
-  width: 100%;
   background-color: #ffffff;
   color: red !important;
   font-size: larger;
-  
 }
 
 /* #postPage h6 {

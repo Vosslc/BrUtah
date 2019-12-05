@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateUserInfo } from "../../ducks/reducer";
-// import axios from 'axios';
+// import axios from "axios";
 import {
   // MDBMask,
   MDBRow,
   MDBCol,
-  MDBBtn,
+  // MDBBtn,
   // MDBView,
   MDBContainer,
   MDBCard,
@@ -14,8 +14,8 @@ import {
   // MDBAnimation,
   MDBCardTitle,
   MDBCardText,
-  MDBCardFooter,
-  MDBIcon
+  MDBCardFooter
+  // MDBIcon
 } from "mdbreact";
 // import "./Post.css";
 
@@ -41,10 +41,10 @@ export class Post extends Component {
               <MDBCol>
                 {/* THIS IS JUST DUMMIE DATA */}
                 <MDBCard className="shadow-box-example hoverable">
-                  <MDBCardBody>
+                  <MDBCardBody className="btn stretched-link">
                     <MDBCardTitle tag="h5">{this.props.el.title}</MDBCardTitle>
                     <MDBCardText className="postText">
-                    {/* className="btn stretched-link" */}
+                      {/* className="btn stretched-link" */}
                       {this.props.el.content}
                       {/* <br />
                       <button>
@@ -57,8 +57,18 @@ export class Post extends Component {
                     </MDBCardText>
                   </MDBCardBody>
                 </MDBCard>
-                <MDBCardFooter small muted>
-                  Last updated 3 mins ago
+                <MDBCardFooter className="footerBar">
+                  <p>Last updated 1 min ago</p>
+                  <button>
+                    <i class="fas fa-comment-alt"> Comment</i>
+                  </button>
+                  <button>
+                    <i class="fas fa-share"> Share</i>
+                  </button>
+                  <i class="fas fa-bookmark"> Save</i>
+                  {/* <button>
+                    <i class="fas fa-ellipsis-h"></i>
+                  </button> */}
                 </MDBCardFooter>
                 {/* DUMMIE END */}
               </MDBCol>

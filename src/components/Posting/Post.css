@@ -14,43 +14,34 @@
 }
 
 #postPage {
-  /* width: 450px;
-  display: flex;
+  /* width: 800px; */
+  /* display: flex;
   justify-content: center; */
 }
 
 #postPage .card-footer {
-  background-color: #ffffff;
-  color: red !important;
-  font-size: larger;
+  background-color: #ffffffb2;
+  /* color: red !important;
+  font-size: larger; */
 }
+/* !Dashboard Create Post */
+.postCard {
+  margin: 50px;
+}
+/* ! */
 
-/* #postPage h6 {
-  line-height: 1.7;
-} */
+/* !FOOTER BAR */
 
-/* #postPage .top-nav-collapse {
-  background: rgba(126, 64, 35, 0.486) !important;
-} */
-
-/* @media (max-width: 768px) {
-  #postPage .navbar:not(.top-nav-collapse) {
-    background: rgba(126, 64, 35, 0.486) !important;
-  }
-  h6 {
-    display: none;
-  }
-  hr {
-    display: none;
-  }
-  .h1-responsive {
-    display: none;
-  }
-  .signInBtn {
-    position: absolute;
-    bottom: 0;
-  }
-} */
+.footerBar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: stretch;
+  font-size: small;
+}
+/* ! */
 
 #postPage label {
   /* color: rgb(255, 255, 255) !important;

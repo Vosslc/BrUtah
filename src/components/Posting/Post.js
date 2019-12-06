@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateUserInfo } from "../../ducks/reducer";
+import { Link } from "react-router-dom";
 // import axios from "axios";
 import {
   // MDBMask,
@@ -41,31 +42,37 @@ export class Post extends Component {
               <MDBCol>
                 {/* THIS IS JUST DUMMIE DATA */}
                 <MDBCard className="shadow-box-example hoverable">
-                  <MDBCardBody className="btn stretched-link">
-                    <MDBCardTitle tag="h5">{this.props.el.title}</MDBCardTitle>
-                    <MDBCardText className="postText">
-                      {/* className="btn stretched-link" */}
-                      {this.props.el.content}
-                      {/* <br />
+                  <Link className="btn stretched-link" to={`/postdetails/${this.props.el.post_id}`}>
+                    <MDBCardBody>
+                      <MDBCardTitle tag="h5">
+                        {this.props.el.title}
+                      </MDBCardTitle>
+                      <MDBCardText className="postText">
+                        {/* className="btn stretched-link" */}
+                        {this.props.el.content}
+                        {/* <br />
                       <button>
-                        <MDBIcon icon="arrow-alt-circle-up" />
+                      <MDBIcon icon="arrow-alt-circle-up" />
                       </button>
                       <br />
                       <button>
-                        <MDBIcon icon="arrow-alt-circle-down" />
-                      </button> */}
-                    </MDBCardText>
-                  </MDBCardBody>
+                      <MDBIcon icon="arrow-alt-circle-down" />
+                    </button> */}
+                      </MDBCardText>
+                    </MDBCardBody>
+                  </Link>
                 </MDBCard>
                 <MDBCardFooter className="footerBar">
                   <p>Last updated 1 min ago</p>
+                  <Link to={`/postdetails/${this.props.el.post_id}`}>
+                    <button>
+                      <i className="fas fa-comment-alt"> Comment</i>
+                    </button>
+                  </Link>
                   <button>
-                    <i class="fas fa-comment-alt"> Comment</i>
+                    <i className="fas fa-share"> Share</i>
                   </button>
-                  <button>
-                    <i class="fas fa-share"> Share</i>
-                  </button>
-                  <i class="fas fa-bookmark"> Save</i>
+                  <i className="fas fa-bookmark"> Save</i>
                   {/* <button>
                     <i class="fas fa-ellipsis-h"></i>
                   </button> */}

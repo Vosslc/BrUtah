@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateUserInfo } from "../../ducks/reducer";
-// import { BrowserRouter as Router } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
+// import { BrowserRouter as Router } from "react-router-dom";
 import {
   // MDBBtn,
   MDBMask,
@@ -11,6 +11,7 @@ import {
 } from "mdbreact";
 import Post from "../Posting/Post";
 import "../Posting/Post.css";
+// import { PostDetails } from "../Posting/PostDetails";
 // import "./Dashboard.css";
 
 class Dashboard extends Component {
@@ -49,10 +50,10 @@ class Dashboard extends Component {
               <div className="card-body">
                 <Link to="/CreatePost">
                   <input
-                    class="form-control bg-light"
+                    className="form-control bg-light"
                     type="text"
                     placeholder="Create Post"
-                    readonly
+                    readOnly
                   ></input>
                 </Link>
               </div>

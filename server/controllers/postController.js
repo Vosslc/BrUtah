@@ -29,5 +29,17 @@ module.exports = {
     .catch(err => {
       console.log(err)
     })
+  },
+  getSelectedPost(req, res){
+    const db = req.app.get('db')
+    console.log(req.params)
+    const {id} = req.params
+    db.select_post(id)
+    .then(result => {
+      res.status(200).send(result)
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 }

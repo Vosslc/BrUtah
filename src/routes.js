@@ -12,8 +12,8 @@ export default (
     <Route path='/register' component={Landing} />
     <Route path='/dashboard' component={Dashboard} />
     <Route path='/createpost' component={CreatePost} />
-    <Route path='/postdetails' component={PostDetails} />
-
+    <Route path='/postdetails/:id' component={PostDetails} />
+    {/* <Route path='/post' component={Post} /> */}
     
   </Switch>
 )

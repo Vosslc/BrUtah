@@ -8,7 +8,7 @@ import {
   MDBMask,
   MDBRow,
   MDBCol,
-  // MDBBtn,
+  MDBBtn,
   MDBView,
   MDBContainer,
   MDBCard,
@@ -32,7 +32,7 @@ export class PostDetails extends Component {
   getSelectedPost() {
     console.log("p", this.props.match);
     axios.get(`/api/post/${this.props.match.params.id}`).then(response => {
-      console.log("res", response);
+      // console.log("res", response);
       //* '/postdetails/:id' in routes.js is match.params which being passed down by react router.
       const selectedPost = response.data[0];
       this.setState({
@@ -48,56 +48,78 @@ export class PostDetails extends Component {
   render() {
     return (
       <div id="postPage">
-        <MDBView>
-          <MDBContainer className="postContainer">
+        <MDBView className="postContainer">
+          <MDBContainer>
             <MDBRow>
               <MDBCol>
-                {/* THIS IS JUST DUMMIE DATA */}
                 <MDBCard className="shadow-box-example hoverable">
                   {/* <Link className="btn stretched-link" to={`/postdetails/${this.props.el.post_id}`}> */}
                   <MDBCardBody>
                     <MDBCardTitle tag="h5">
                       {this.state.post.title}
-                      {console.log("hit", this.state.post)}
+                      {/* {console.log("hit", this.state.post)} */}
                     </MDBCardTitle>
 
-                    <MDBCardText>
-                      {/* className="btn stretched-link" */}
-                      {this.state.post.content}
-                    </MDBCardText>
+                    <MDBCardText>{this.state.post.content}</MDBCardText>
                   </MDBCardBody>
 
                   {/*! COMMENTS */}
-                  <MDBCardBody>
-                    <MDBCardTitle tag="h5">fhjkasdfh</MDBCardTitle>
-                    <MDBCardText className="postText">fadsafsda;fjljk.kjskdafj/</MDBCardText>
-                  </MDBCardBody>
-                  {/* </Link> */}
+
                   <MDBCardFooter className="footerBar">
-                    <div className="d">
+                    <div className="def-number-input number-input">
                       <button>
                         <MDBIcon icon="arrow-alt-circle-up" />
                       </button>
-                      <br />
+                      {/* <input
+                        className="quantity"
+                        name="quantity"
+                        value={this.state.value}
+                        onChange={() => console.log("change")}
+                        type="number"
+                      /> */}
                       <button>
                         <MDBIcon icon="arrow-alt-circle-down" />
                       </button>
                     </div>
-                    {/* <Link to={`/postdetails/${this.props.el.post_id}`}> */}
-                    <button>
-                      <i className="fas fa-comment-alt"> Comment</i>
-                    </button>
-                    {/* </Link> */}
+
                     <button>
                       <i className="fas fa-share"> Share</i>
                     </button>
                     <i className="fas fa-bookmark"> Save</i>
-                    {/* <button>
-                    <i class="fas fa-ellipsis-h"></i>
-                  </button> */}
+                    <button>
+                      <MDBIcon icon="edit" />
+                      Edit
+                    </button>
                   </MDBCardFooter>
+                  <MDBCardBody>
+                    <hr />
+                    <p>Comment as Roundy</p>
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text" id="basic-addon">
+                          <i className="fas fa-pencil-alt prefix"></i>
+                        </span>
+                      </div>
+                      <textarea
+                        className="form-control"
+                        id="exampleFormControlTextarea1"
+                        rows="3"
+                        placeholder="Whats are your thoughts?"
+                      ></textarea>
+                    </div>
+                    <MDBBtn outline color="default" size="sm">
+                      Comment
+                      <MDBIcon icon="pencil-alt" className="ml-1" />
+                    </MDBBtn>
+                    <br />
+                    <hr />
+                    <MDBCardTitle tag="h5">Comments...</MDBCardTitle>
+                    <MDBCardText className="postText">
+                      This is a comment about beer.. Beer is good. I Beer is
+                      cold.
+                    </MDBCardText>
+                  </MDBCardBody>
                 </MDBCard>
-                {/* DUMMIE END */}
               </MDBCol>
             </MDBRow>
           </MDBContainer>

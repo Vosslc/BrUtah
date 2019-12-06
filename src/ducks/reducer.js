@@ -4,13 +4,15 @@ const initialState = {
   profile_img: "",
   //!CREATE_POST
   createInput: "",
-  createTitle: ""
+  createTitle: "",
+  createComment: ""
 };
 
 // ACTION CONSTANTS
 const UPDATE_USER_INFO = "UPDATE_USER_INFO";
 const UPDATE_POST_INPUT = "UPDATE_POST_INPUT";
 const UPDATE_POST_TITLE = "UPDATE_POST_TITLE";
+const UPDATE_COMMENT = "UPDATE_COMMENT"; 
 const CLEAR_STATE = "CLEAR_STATE";
 
 function reducer(state = initialState, action) {
@@ -28,6 +30,11 @@ function reducer(state = initialState, action) {
     case CLEAR_STATE:
       return initialState;
       //!---------
+
+      //!COMMENTS
+    case UPDATE_COMMENT:
+      return Object.assign({}, state, { createComment: action.payload });
+      //!--------
       default:
         return state;
   }
@@ -59,5 +66,12 @@ export function clearState() {
   };
 }
 //!---------
-
+//!COMMENT
+export function updateComment(createComment) {
+  return {
+    type: UPDATE_COMMENT,
+    payload: createComment
+  };
+}
+//!--------
 export default reducer;

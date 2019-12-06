@@ -24,6 +24,18 @@
   /* color: red !important;
   font-size: larger; */
 }
+
+.postContent {
+  /* width: 450px; */
+  position: relative;
+  padding-bottom: 25px;
+}
+.postContainer {
+  padding-top: 115px;
+  padding-bottom: 125px;
+  overflow: scroll;
+}
+
 /* !Dashboard Create Post */
 .postCard {
   margin: 50px;

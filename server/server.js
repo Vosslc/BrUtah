@@ -44,7 +44,7 @@ app.post('/api/post', postCtrl.addNewPost)
 // app.put('/api/post/:id', postCtrl.updatePost)
 
 // //! COMMENT ENDPOINTS
-// app.get('/api/comment/:postid', commentCtrl.getAllComment)
+app.get('/api/comment', commentCtrl.getAllComments)
 // app.post('/api/comment/:postid', commentCtrl.addNewComment)
 // app.delete('/api/comment/:commentid', commentCtrl.deleteComment)
 

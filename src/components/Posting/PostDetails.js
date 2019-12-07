@@ -16,18 +16,21 @@ import {
   MDBCardFooter,
   MDBIcon
 } from "mdbreact";
+// import { isArgumentPlaceholder } from "@babel/types";
 
 export class PostDetails extends Component {
   constructor() {
     super();
     this.state = {
       post: {},
+      comments: []
       // profile_img
     };
   }
   //! ****LIFECYCLE METHODS**** //
   componentDidMount() {
     this.getSelectedPost();
+    this.getAllComments();
   }
   
   //! ****AXIOS SERVER CALLS**** //
@@ -43,6 +46,17 @@ export class PostDetails extends Component {
         console.log("this is state", this.state.post);
       });
     }
+    //! ***AXIOS COMMENT CALLS*** //
+    getAllComments() {
+      axios.get("/api/comment").then(response => {
+        console.log("res", response);
+        const allComments = response.data;
+        this.setState({
+          comments: allComments
+        });
+      });
+    }
+
     addNewComment() {
 
     }
@@ -96,7 +110,9 @@ export class PostDetails extends Component {
                       Edit
                     </button>
                   </MDBCardFooter>
+
                   {/* COMMENT INPUT FIELD */}
+
                   <MDBCardBody>
                     <hr />
                     <p>Comment as Roundy</p>
@@ -124,8 +140,7 @@ export class PostDetails extends Component {
                     <hr />
                     <MDBCardTitle tag="h5">Comments...</MDBCardTitle>
                     <MDBCardText className="postText">
-                      This is a comment about beer.. Beer is good. I Beer is
-                      cold.
+                    {/* {this.state.comments[0]} */}
                     </MDBCardText>
                   </MDBCardBody>
                 </MDBCard>

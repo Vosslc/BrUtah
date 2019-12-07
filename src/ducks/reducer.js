@@ -12,14 +12,15 @@ const initialState = {
 const UPDATE_USER_INFO = "UPDATE_USER_INFO";
 const UPDATE_POST_INPUT = "UPDATE_POST_INPUT";
 const UPDATE_POST_TITLE = "UPDATE_POST_TITLE";
-const UPDATE_COMMENT = "UPDATE_COMMENT"; 
+const UPDATE_COMMENT = "UPDATE_COMMENT";
 const CLEAR_STATE = "CLEAR_STATE";
 
 function reducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_USER_INFO:
       return { ...state, ...action.payload };
-
+    //!PROFILE_IMG
+    
     //!CREATE_POST
     case UPDATE_POST_INPUT:
       return Object.assign({}, state, { createInput: action.payload });
@@ -29,14 +30,14 @@ function reducer(state = initialState, action) {
 
     case CLEAR_STATE:
       return initialState;
-      //!---------
+    //!---------
 
-      //!COMMENTS
+    //!COMMENTS
     case UPDATE_COMMENT:
       return Object.assign({}, state, { createComment: action.payload });
-      //!--------
-      default:
-        return state;
+    //!--------
+    default:
+      return state;
   }
 }
 

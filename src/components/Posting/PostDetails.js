@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { updateUserInfo } from "../../ducks/reducer";
+import { updateComment, updateUserInfo } from "../../ducks/reducer";
 import axios from "axios";
-// import { Dashboard } from "../Dashboard/Dashboard"
-// import { Link } from "react-router-dom";
+
 import {
-  MDBMask,
   MDBRow,
   MDBCol,
   MDBBtn,
@@ -13,39 +11,46 @@ import {
   MDBContainer,
   MDBCard,
   MDBCardBody,
-  // MDBAnimation,
   MDBCardTitle,
   MDBCardText,
   MDBCardFooter,
   MDBIcon
 } from "mdbreact";
-// import "./CreatePost.css";
 
 export class PostDetails extends Component {
   constructor() {
     super();
     this.state = {
-      post: {}
+      post: {},
+      // profile_img
     };
   }
-
-  getSelectedPost() {
-    console.log("p", this.props.match);
-    axios.get(`/api/post/${this.props.match.params.id}`).then(response => {
-      // console.log("res", response);
-      //* '/postdetails/:id' in routes.js is match.params which being passed down by react router.
-      const selectedPost = response.data[0];
-      this.setState({
-        post: selectedPost
-      });
-      console.log("this is state", this.state.post);
-    });
-  }
+  //! ****LIFECYCLE METHODS**** //
   componentDidMount() {
     this.getSelectedPost();
   }
+  
+  //! ****AXIOS SERVER CALLS**** //
+    getSelectedPost() {
+      console.log("p", this.props.match);
+      axios.get(`/api/post/${this.props.match.params.id}`).then(response => {
+        // console.log("res", response);
+        //* '/postdetails/:id' in routes.js is match.params which being passed down by react router.
+        const selectedPost = response.data[0];
+        this.setState({
+          post: selectedPost
+        });
+        console.log("this is state", this.state.post);
+      });
+    }
+    addNewComment() {
+
+    }
+
 
   render() {
+    const { updateComment } = this.props;
+
     return (
       <div id="postPage">
         <MDBView className="postContainer">
@@ -91,6 +96,7 @@ export class PostDetails extends Component {
                       Edit
                     </button>
                   </MDBCardFooter>
+                  {/* COMMENT INPUT FIELD */}
                   <MDBCardBody>
                     <hr />
                     <p>Comment as Roundy</p>
@@ -105,6 +111,9 @@ export class PostDetails extends Component {
                         id="exampleFormControlTextarea1"
                         rows="3"
                         placeholder="Whats are your thoughts?"
+                        value={this.props.createComment}
+                        name="input"
+                        onChange={e => updateComment(e.target.value)}
                       ></textarea>
                     </div>
                     <MDBBtn outline color="default" size="sm">
@@ -129,4 +138,16 @@ export class PostDetails extends Component {
   }
 }
 
-export default connect(null, { updateUserInfo })(PostDetails);
+function mapStateToProps(state) {
+  const { createComment } = state;
+
+  return {
+    createComment,
+    // profile_img
+  };
+}
+
+export default connect(mapStateToProps, {
+  updateComment,
+  updateUserInfo
+})(PostDetails);

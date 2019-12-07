@@ -4,31 +4,17 @@ import { updateUserInfo } from "../../ducks/reducer";
 import { Link } from "react-router-dom";
 // import axios from "axios";
 import {
-  // MDBMask,
   MDBRow,
   MDBCol,
-  // MDBBtn,
-  // MDBView,
   MDBContainer,
   MDBCard,
   MDBCardBody,
-  // MDBAnimation,
   MDBCardTitle,
   MDBCardText,
   MDBCardFooter
-  // MDBIcon
 } from "mdbreact";
 
 export class Post extends Component {
-  // handleChange = (key, value) => {
-  //   this.setState({ [key]: value });
-  // };
-
-  // toggleCollapse = collapseID => () =>
-  //   this.setState(prevState => ({
-  //     collapseID: prevState.collapseID !== collapseID ? collapseID : ""
-  //   }));
-
   render() {
     return (
       <div id="postPage">
@@ -42,10 +28,11 @@ export class Post extends Component {
                     to={`/postdetails/${this.props.el.post_id}`}
                   >
                     <MDBCardBody>
-                      <MDBCardTitle tag="h5">
+                      <MDBCardTitle className="text-left" tag="h5">
                         {this.props.el.title}
                       </MDBCardTitle>
-                      <MDBCardText className="postText">
+                      <hr />
+                      <MDBCardText className="postText text-left">
                         {this.props.el.content}
                       </MDBCardText>
                     </MDBCardBody>

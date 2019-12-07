@@ -25,11 +25,11 @@ import {
 import "./CreatePost.css";
 
 class CreatePost extends Component {
-  //! ****AXIOS SERVER CALLS**** //
   componentDidMount() {
     // console.log(this.props);
   }
-
+  
+  //! ****AXIOS SERVER CALLS**** //
   addNewPost() {
     // console.log("hit:addNewPost", this.props);
     axios.post("/api/post", this.props).then(res => {
@@ -62,13 +62,11 @@ class CreatePost extends Component {
                   >
                     <MDBCard>
                       <MDBCardBody className="white-text">
-                        <h3 className="text-center">
+                        <h3 className="text-left">
                           <MDBIcon /> Create a post
                         </h3>
                         <hr className="hr-light" />
                         <form>
-                        
-
                           <input
                             type="text"
                             id="example3"
@@ -93,20 +91,20 @@ class CreatePost extends Component {
                         </form>
                         <div className="text-center mt-4 black-text">
                           <Link to="/dashboard">
-                          <MDBBtn
-                            onClick={() => this.addNewPost()}
-                            color="indigo"
-                            className="post-btn"
-                          >
-                            Post
-                          </MDBBtn>
-                          <MDBBtn
-                            onClick={() => this.props.clearState()}
-                            color="indigo"
-                            className="cancel"
-                          >
-                            Cancel
-                          </MDBBtn>
+                            <MDBBtn
+                              onClick={() => this.addNewPost()}
+                              color="indigo"
+                              className="post-btn"
+                            >
+                              Post
+                            </MDBBtn>
+                            <MDBBtn
+                              onClick={() => this.props.clearState()}
+                              color="indigo"
+                              className="cancel"
+                            >
+                              Cancel
+                            </MDBBtn>
                           </Link>
                           <hr className="hr-light" />
                           <div className="text-center d-flex justify-content-center white-label">
@@ -152,13 +150,10 @@ function mapStateToProps(state) {
   return {
     createTitle,
     createInput
-    // updatePostInput,
-    // updatePostTitle
   };
 }
 
 export default connect(mapStateToProps, {
-  // updateUserInfo,
   updatePostInput,
   updatePostTitle,
   clearState

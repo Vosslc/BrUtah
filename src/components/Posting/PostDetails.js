@@ -16,6 +16,7 @@ import {
   MDBCardFooter,
   MDBIcon
 } from "mdbreact";
+import Comment from "../Comments/Comment";
 // import { isArgumentPlaceholder } from "@babel/types";
 
 export class PostDetails extends Component {
@@ -32,35 +33,32 @@ export class PostDetails extends Component {
     this.getSelectedPost();
     this.getAllComments();
   }
-  
+
   //! ****AXIOS SERVER CALLS**** //
-    getSelectedPost() {
-      console.log("p", this.props.match);
-      axios.get(`/api/post/${this.props.match.params.id}`).then(response => {
-        // console.log("res", response);
-        //* '/postdetails/:id' in routes.js is match.params which being passed down by react router.
-        const selectedPost = response.data[0];
-        this.setState({
-          post: selectedPost
-        });
-        console.log("this is state", this.state.post);
+  getSelectedPost() {
+    console.log("p", this.props.match);
+    axios.get(`/api/post/${this.props.match.params.id}`).then(response => {
+      // console.log("res", response);
+      //* '/postdetails/:id' in routes.js is match.params which being passed down by react router.
+      const selectedPost = response.data[0];
+      this.setState({
+        post: selectedPost
       });
-    }
-    //! ***AXIOS COMMENT CALLS*** //
-    getAllComments() {
-      axios.get("/api/comment").then(response => {
-        console.log("res", response);
-        const allComments = response.data;
-        this.setState({
-          comments: allComments
-        });
+      console.log("this is state", this.state.post);
+    });
+  }
+  //! ***AXIOS COMMENT CALLS*** //
+  getAllComments() {
+    axios.get("/api/comment").then(response => {
+      console.log("res", response);
+      const allComments = response.data;
+      this.setState({
+        comments: allComments
       });
-    }
+    });
+  }
 
-    addNewComment() {
-
-    }
-
+  addNewComment() {}
 
   render() {
     const { updateComment } = this.props;
@@ -139,9 +137,17 @@ export class PostDetails extends Component {
                     <br />
                     <hr />
                     <MDBCardTitle tag="h5">Comments...</MDBCardTitle>
-                    <MDBCardText className="postText">
-                    {/* {this.state.comments[0]} */}
-                    </MDBCardText>
+                    
+                      
+                      {this.state.comments.map((el, index) => (
+                        <Comment
+                          el={el}
+                          index={index}
+                          key={el.comment_id}
+                          remove={this.deleteComment}
+                        />
+                      ))}
+                    
                   </MDBCardBody>
                 </MDBCard>
               </MDBCol>
@@ -157,7 +163,7 @@ function mapStateToProps(state) {
   const { createComment } = state;
 
   return {
-    createComment,
+    createComment
     // profile_img
   };
 }

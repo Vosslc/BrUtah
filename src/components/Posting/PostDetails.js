@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { updateComment, updateUserInfo } from "../../ducks/reducer";
+import { updateComment, updateUserInfo, clearState } from "../../ducks/reducer";
 import axios from "axios";
 
 import {
@@ -27,16 +27,18 @@ export class PostDetails extends Component {
       comments: []
       // profile_img
     };
+    // console.log("this is state for comments", this.state.comments);
   }
   //! ****LIFECYCLE METHODS**** //
   componentDidMount() {
     this.getSelectedPost();
     this.getAllComments();
+    // this.getAllCommentsForPost();
   }
 
   //! ****AXIOS SERVER CALLS**** //
   getSelectedPost() {
-    console.log("p", this.props.match);
+    // console.log("p", this.props.match);
     axios.get(`/api/post/${this.props.match.params.id}`).then(response => {
       // console.log("res", response);
       //* '/postdetails/:id' in routes.js is match.params which being passed down by react router.
@@ -44,10 +46,21 @@ export class PostDetails extends Component {
       this.setState({
         post: selectedPost
       });
-      console.log("this is state", this.state.post);
+      console.log("this is state for POST", this.state.post);
     });
   }
   //! ***AXIOS COMMENT CALLS*** //
+  // getAllCommentsForPost() {
+  //   axios.get('/api/comment').then(response => {
+  //     console.log("res", response);
+
+  //     const allComments = response.data[0];
+  //     this.setState({
+  //       comments: allComments
+  //     });
+  //     console.log("this is state for comments", this.state.comments);
+  //   });
+  // }
   getAllComments() {
     axios.get("/api/comment").then(response => {
       console.log("res", response);
@@ -55,10 +68,21 @@ export class PostDetails extends Component {
       this.setState({
         comments: allComments
       });
+      console.log("this is state for comments", this.state.comments);
     });
   }
 
-  addNewComment() {}
+  addNewComment() {
+    console.log("PROPS", this.props);
+    axios
+      .post("/api/comment", {
+        createComment: this.props.createComment,
+        post_id: this.state.post.post_id
+      })
+      .then(res => {
+        this.props.clearState();
+      });
+  }
 
   render() {
     const { updateComment } = this.props;
@@ -130,24 +154,27 @@ export class PostDetails extends Component {
                         onChange={e => updateComment(e.target.value)}
                       ></textarea>
                     </div>
-                    <MDBBtn outline color="default" size="sm">
+                    <MDBBtn
+                      outline
+                      color="default"
+                      size="sm"
+                      onClick={() => this.addNewComment()}
+                    >
                       Comment
                       <MDBIcon icon="pencil-alt" className="ml-1" />
                     </MDBBtn>
                     <br />
                     <hr />
                     <MDBCardTitle tag="h5">Comments...</MDBCardTitle>
-                    
-                      
-                      {this.state.comments.map((el, index) => (
-                        <Comment
-                          el={el}
-                          index={index}
-                          key={el.comment_id}
-                          remove={this.deleteComment}
-                        />
-                      ))}
-                    
+
+                    {this.state.comments.map((el, index) => (
+                      <Comment
+                        el={el}
+                        index={index}
+                        key={el.comment_id}
+                        remove={this.deleteComment}
+                      />
+                    ))}
                   </MDBCardBody>
                 </MDBCard>
               </MDBCol>
@@ -170,5 +197,6 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
   updateComment,
-  updateUserInfo
+  updateUserInfo,
+  clearState
 })(PostDetails);

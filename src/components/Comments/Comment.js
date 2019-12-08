@@ -1,17 +1,18 @@
 import React, { Component } from "react";
-
+import { connect } from "react-redux";
+import { updateComment, updateUserInfo } from "../../ducks/reducer";
 import {
   MDBRow,
   MDBCol,
-  MDBBtn,
-  MDBView,
+  // MDBBtn,
+  // MDBView,
   MDBContainer,
-  MDBCard,
+  // MDBCard,
   MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCardFooter,
-  MDBIcon
+  // MDBCardTitle,
+  MDBCardText
+  // MDBCardFooter,
+  // MDBIcon
 } from "mdbreact";
 
 export class Comment extends Component {
@@ -21,12 +22,10 @@ export class Comment extends Component {
         <MDBContainer className="commentText">
           <MDBRow>
             <MDBCol>
-
-                {/* <Link className="btn stretched-link" to={`/postdetails/${this.props.el.post_id}`}> */}
-                <MDBCardBody>
-                  <MDBCardText>{this.props.el.comment_content}</MDBCardText>
-                </MDBCardBody>
-              
+              {/* <Link className="btn stretched-link" to={`/postdetails/${this.props.el.post_id}`}> */}
+              <MDBCardBody>
+                <MDBCardText>{this.props.el.comment_content}</MDBCardText>
+              </MDBCardBody>
             </MDBCol>
           </MDBRow>
         </MDBContainer>
@@ -35,4 +34,16 @@ export class Comment extends Component {
   }
 }
 
-export default Comment;
+function mapStateToProps(state) {
+  const { createComment } = state;
+
+  return {
+    createComment
+    // profile_img
+  };
+}
+
+export default connect(mapStateToProps, {
+  updateComment,
+  updateUserInfo
+})(Comment);

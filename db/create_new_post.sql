@@ -4,3 +4,7 @@ VALUES (${title}, ${content}, ${user_id});
 -- INNER JOIN post
 -- ON user.user_id = post.user_id;
 -- VALUES ($1, $2)
+
+-- SELECT * FROM comment
+-- JOIN post ON post.post_id = comment.post_id;
+-- WHERE comment_content = $1;

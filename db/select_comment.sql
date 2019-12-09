@@ -10,4 +10,5 @@
 -- SELECT FROM comment
 -- WHERE post_id = ($1);
 
-SELECT * from comment where post_id = ($1);
+SELECT * from comment where post_id = ($1)
+order by comment_id DESC;

@@ -58,31 +58,35 @@ export class PostDetails extends Component {
     });
   }
   editPost() {
-    axios.put(`/api/post/${this.state.post.post_id}`, {
-      createInput: this.props.createInput,
-      createTitle: this.props.createTitle
-    })
-    .then(res => {
-      this.props.clearState();
-      this.setState({isEditing: false});
-      this.getSelectedPost();
-    });
+    axios
+      .put(`/api/post/${this.state.post.post_id}`, {
+        createInput: this.props.createInput,
+        createTitle: this.props.createTitle
+      })
+      .then(res => {
+        this.props.clearState();
+        this.setState({ isEditing: false });
+        this.getSelectedPost();
+      });
   }
 
   deletePost() {
-    axios.delete(`/api/post/${this.state.post.post_id}`).then(this.props.history.push("/dashboard"))
+    axios.delete(`/api/post/${this.state.post.post_id}`).then(res => {
+      this.props.history.push("/dashboard");
+      this.props.clearState();
+    });
   }
 
   //! ***AXIOS COMMENT CALLS*** //
   getAllCommentsForPost() {
     axios.get(`/api/comment/${this.props.match.params.id}`).then(response => {
-      console.log("res", response);
+      // console.log("res", response);
 
       const allComments = response.data;
       this.setState({
         comments: allComments
       });
-      console.log("this is state for comments", this.state.comments);
+      // console.log("this is state for comments", this.state.comments);
     });
   }
   // getAllComments() {
@@ -97,7 +101,7 @@ export class PostDetails extends Component {
   // }
 
   addNewComment() {
-    console.log("PROPS", this.props);
+    // console.log("PROPS", this.props);
     axios
       .post("/api/comment", {
         createComment: this.props.createComment,
@@ -105,6 +109,7 @@ export class PostDetails extends Component {
       })
       .then(res => {
         this.props.clearState();
+        this.getAllCommentsForPost();
       });
   }
 
@@ -176,10 +181,10 @@ export class PostDetails extends Component {
 
                       <MDBBtn
                         onClick={() => {
-                          this.deletePost()
+                          this.deletePost();
                           this.setState({
                             isEditing: false
-                          })
+                          });
                         }}
                         outline
                         color="danger"
@@ -215,9 +220,9 @@ export class PostDetails extends Component {
                     </button>
                     <i className="fas fa-bookmark"> Save</i>
                     <button
-                    className="edit-btn"
+                      className="edit-btn"
                       onClick={() => {
-                        console.log(this.state.post)
+                        console.log(this.state.post);
                         updatePostInput(this.state.post.content);
                         updatePostTitle(this.state.post.title);
                         this.setState({

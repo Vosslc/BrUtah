@@ -32,12 +32,17 @@ class CreatePost extends Component {
   //! ****AXIOS SERVER CALLS**** //
   addNewPost() {
     // console.log("hit:addNewPost", this.props);
-    axios.post("/api/post", this.props).then(res => {
-      // this.props.history.push("/dashboard");
-      // <--- should I use this or <Link to="/dashboard">
-      this.props.clearState();
-      // console.log(res)
-    });
+    axios
+      .post("/api/post", {
+        createInput: this.props.createInput,
+        createTitle: this.props.createTitle
+      })
+      .then(res => {
+        // this.props.history.push("/dashboard");
+        // <--- should I use this or <Link to="/dashboard">
+        this.props.clearState();
+        // console.log(res)
+      });
   }
 
   render() {
@@ -91,7 +96,8 @@ class CreatePost extends Component {
                           />
                         </form>
                         <div className="text-center mt-4 black-text">
-                          <Link to="/dashboard">
+                          {/* <Link to="/dashboard"> */}
+                          <Link to={{pathname: '/dashboard', state: { from: this.props.location.pathname }}}>
                             <MDBBtn
                               onClick={() => this.addNewPost()}
                               color="indigo"

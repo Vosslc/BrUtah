@@ -28,12 +28,19 @@ class Dashboard extends Component {
     this.getAllPost();
   }
 
-  // componentDidUpdate(prevProps) {
-  //   console.log(prevProps);
-  //   if (prevProps.match.path !== this.props.match.path) {
-  //     this.getAllPost();
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    console.log("1", prevProps);
+    console.log("2", this.props);
+    console.log("3", this.props.location);
+    if (this.props.location.state && this.props.location.state.from) {
+      // if (this.props.location.state.from === "/CreatePost")
+      if (this.props.location.state.from !== prevProps.location.state.from) {
+        this.getAllPost();
+      }
+    }
+    // if (prevProps.match.path !== this.props.match.path) {
+    // }
+  }
 
   getAllPost() {
     axios.get("/api/post").then(response => {
@@ -42,6 +49,7 @@ class Dashboard extends Component {
         postList: allPost
       });
     });
+    // window.location.reload(true);
   }
 
   // deletePost(id) {

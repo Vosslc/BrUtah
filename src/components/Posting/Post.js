@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateUserInfo } from "../../ducks/reducer";
 import { Link } from "react-router-dom";
+
 // import axios from "axios";
 import {
   MDBRow,
@@ -28,7 +29,7 @@ export class Post extends Component {
                     to={`/postdetails/${this.props.el.post_id}`}
                   >
                     <MDBCardBody>
-                      <MDBCardTitle className="text-left" tag="h5">
+                      <MDBCardTitle className="post-title text-left" tag="h5">
                         {this.props.el.title}
                       </MDBCardTitle>
                       <hr />

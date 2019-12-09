@@ -134,14 +134,14 @@ export class PostDetails extends Component {
                         <input
                           type="text"
                           id="example3"
-                          className="form-control form-control-sm"
+                          className="edit-title form-control form-control-sm"
                           placeholder="Title"
                           value={this.props.createTitle}
                           name="title"
                           onChange={e => updatePostTitle(e.target.value)}
                         />
                         <MDBInput
-                          // className="white-text "
+                          className="edit-content"
                           // iconClass="white-text"
                           // icon="pencil-alt"
                           type="textarea"
@@ -215,6 +215,7 @@ export class PostDetails extends Component {
                     </button>
                     <i className="fas fa-bookmark"> Save</i>
                     <button
+                    className="edit-btn"
                       onClick={() => {
                         console.log(this.state.post)
                         updatePostInput(this.state.post.content);

@@ -25,6 +25,17 @@ class Dashboard extends Component {
   // ****AXIOS SERVER CALLS**** //
 
   componentDidMount() {
+    this.getAllPost();
+  }
+
+  // componentDidUpdate(prevProps) {
+  //   console.log(prevProps);
+  //   if (prevProps.match.path !== this.props.match.path) {
+  //     this.getAllPost();
+  //   }
+  // }
+
+  getAllPost() {
     axios.get("/api/post").then(response => {
       const allPost = response.data;
       this.setState({
@@ -33,13 +44,13 @@ class Dashboard extends Component {
     });
   }
 
-  deletePost(id) {
-    axios.delete(`/api/post/${id}`).then(response => {
-      this.setState({
-        postList: response.data
-      });
-    });
-  }
+  // deletePost(id) {
+  //   axios.delete(`/api/post/${id}`).then(response => {
+  //     this.setState({
+  //       postList: response.data
+  //     });
+  //   });
+  // }
 
   render() {
     return (
@@ -64,7 +75,7 @@ class Dashboard extends Component {
                 el={el}
                 index={index}
                 key={el.post_id}
-                remove={this.deletePost}
+                // remove={this.deletePost}
               />
             ))}
           </MDBMask>

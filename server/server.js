@@ -40,8 +40,8 @@ app.post('/auth/login', authCtrl.login)
 app.get('/api/post', postCtrl.getAllPost)
 app.get('/api/post/:id', postCtrl.getSelectedPost)
 app.post('/api/post', postCtrl.addNewPost)
-// app.delete('/api/post/:id', postCtrl.deletePost)
-// app.put('/api/post/:id', postCtrl.updatePost)
+app.delete('/api/post/:id', postCtrl.deletePost)
+app.put('/api/post/:id', postCtrl.updatePost)
 
 // //! COMMENT ENDPOINTS
 app.get('/api/comment', commentCtrl.getAllComments)

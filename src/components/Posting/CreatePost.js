@@ -28,12 +28,13 @@ class CreatePost extends Component {
   componentDidMount() {
     // console.log(this.props);
   }
-  
+
   //! ****AXIOS SERVER CALLS**** //
   addNewPost() {
     // console.log("hit:addNewPost", this.props);
     axios.post("/api/post", this.props).then(res => {
-      //? this.props.history.push("/dashboard"); <--- should I use this or <Link to="/dashboard">
+      // this.props.history.push("/dashboard");
+      // <--- should I use this or <Link to="/dashboard">
       this.props.clearState();
       // console.log(res)
     });

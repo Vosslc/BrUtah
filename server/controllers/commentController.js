@@ -30,7 +30,6 @@ module.exports = {
   getAllCommentsForPost(req, res) {
     const db = req.app.get("db");
     console.log("PARAMS comment", req.params);
-    // console.log("BODY comment",req.body)
     const { id } = req.params;
     db.select_comment(id)
       .then(result => {

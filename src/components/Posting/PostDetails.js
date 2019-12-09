@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { updateComment, updateUserInfo, clearState } from "../../ducks/reducer";
+import {
+  updateComment,
+  updatePostInput,
+  updatePostTitle,
+  updateUserInfo,
+  clearState
+} from "../../ducks/reducer";
 import axios from "axios";
 
 import {
@@ -14,7 +20,8 @@ import {
   MDBCardTitle,
   MDBCardText,
   MDBCardFooter,
-  MDBIcon
+  MDBIcon,
+  MDBInput
 } from "mdbreact";
 import Comment from "../Comments/Comment";
 // import { isArgumentPlaceholder } from "@babel/types";
@@ -24,7 +31,8 @@ export class PostDetails extends Component {
     super();
     this.state = {
       post: {},
-      comments: []
+      comments: [],
+      isEditing: false
       // profile_img
     };
     // console.log("this is state for comments", this.state.comments);
@@ -32,8 +40,8 @@ export class PostDetails extends Component {
   //! ****LIFECYCLE METHODS**** //
   componentDidMount() {
     this.getSelectedPost();
-    this.getAllComments();
-    // this.getAllCommentsForPost();
+    // this.getAllComments();
+    this.getAllCommentsForPost();
   }
 
   //! ****AXIOS SERVER CALLS**** //
@@ -46,24 +54,30 @@ export class PostDetails extends Component {
       this.setState({
         post: selectedPost
       });
-      console.log("this is state for POST", this.state.post);
+      // console.log("this is state for POST", this.state.post);
     });
   }
-  //! ***AXIOS COMMENT CALLS*** //
-  // getAllCommentsForPost() {
-  //   axios.get('/api/comment').then(response => {
-  //     console.log("res", response);
+  editPost() {
+    axios.put(`/api/post/${this.state.post.post_id}`, {
+      createInput: this.props.createInput,
+      createTitle: this.props.createTitle
+    })
+    .then(res => {
+      this.props.clearState();
+      this.setState({isEditing: false});
+      this.getSelectedPost();
+    });
+  }
 
-  //     const allComments = response.data[0];
-  //     this.setState({
-  //       comments: allComments
-  //     });
-  //     console.log("this is state for comments", this.state.comments);
-  //   });
-  // }
-  getAllComments() {
-    axios.get("/api/comment").then(response => {
+  deletePost() {
+    axios.delete(`/api/post/${this.state.post.post_id}`).then(this.props.history.push("/dashboard"))
+  }
+
+  //! ***AXIOS COMMENT CALLS*** //
+  getAllCommentsForPost() {
+    axios.get(`/api/comment/${this.props.match.params.id}`).then(response => {
       console.log("res", response);
+
       const allComments = response.data;
       this.setState({
         comments: allComments
@@ -71,6 +85,16 @@ export class PostDetails extends Component {
       console.log("this is state for comments", this.state.comments);
     });
   }
+  // getAllComments() {
+  //   axios.get("/api/comment").then(response => {
+  //     // console.log("res", response);
+  //     const allComments = response.data;
+  //     this.setState({
+  //       comments: allComments
+  //     });
+  //     // console.log("this is state for comments", this.state.comments);
+  //   });
+  // }
 
   addNewComment() {
     console.log("PROPS", this.props);
@@ -85,8 +109,8 @@ export class PostDetails extends Component {
   }
 
   render() {
-    const { updateComment } = this.props;
-
+    const { updateComment, updatePostInput, updatePostTitle } = this.props;
+    const { isEditing } = this.state;
     return (
       <div id="postPage">
         <MDBView className="postContainer">
@@ -95,14 +119,77 @@ export class PostDetails extends Component {
               <MDBCol>
                 <MDBCard className="shadow-box-example hoverable">
                   {/* <Link className="btn stretched-link" to={`/postdetails/${this.props.el.post_id}`}> */}
-                  <MDBCardBody>
-                    <MDBCardTitle tag="h5">
-                      {this.state.post.title}
-                      {/* {console.log("hit", this.state.post)} */}
-                    </MDBCardTitle>
+                  {!isEditing ? (
+                    <MDBCardBody>
+                      <MDBCardTitle tag="h5">
+                        {this.state.post.title}
+                        {/* {console.log("hit", this.state.post)} */}
+                      </MDBCardTitle>
 
-                    <MDBCardText>{this.state.post.content}</MDBCardText>
-                  </MDBCardBody>
+                      <MDBCardText>{this.state.post.content}</MDBCardText>
+                    </MDBCardBody>
+                  ) : (
+                    <MDBCardBody>
+                      <MDBCardTitle tag="h5">
+                        <input
+                          type="text"
+                          id="example3"
+                          className="form-control form-control-sm"
+                          placeholder="Title"
+                          value={this.props.createTitle}
+                          name="title"
+                          onChange={e => updatePostTitle(e.target.value)}
+                        />
+                        <MDBInput
+                          // className="white-text "
+                          // iconClass="white-text"
+                          // icon="pencil-alt"
+                          type="textarea"
+                          label="Editing Post?"
+                          outline
+                          value={this.props.createInput}
+                          name="input"
+                          onChange={e => updatePostInput(e.target.value)}
+                        ></MDBInput>
+                        {/* {console.log("hit", this.state.post)} */}
+                      </MDBCardTitle>
+                      <MDBBtn
+                        onClick={() => this.editPost()}
+                        color="indigo"
+                        className="post-btn"
+                        size="sm"
+                      >
+                        Edit Post
+                      </MDBBtn>
+                      <MDBBtn
+                        onClick={() =>
+                          this.setState({
+                            isEditing: false
+                          })
+                        }
+                        color="indigo"
+                        className="cancel"
+                        size="sm"
+                      >
+                        Cancel
+                      </MDBBtn>
+
+                      <MDBBtn
+                        onClick={() => {
+                          this.deletePost()
+                          this.setState({
+                            isEditing: false
+                          })
+                        }}
+                        outline
+                        color="danger"
+                        className="delete"
+                        size="sm"
+                      >
+                        Delete Post
+                      </MDBBtn>
+                    </MDBCardBody>
+                  )}
 
                   {/*! COMMENTS */}
 
@@ -127,7 +214,16 @@ export class PostDetails extends Component {
                       <i className="fas fa-share"> Share</i>
                     </button>
                     <i className="fas fa-bookmark"> Save</i>
-                    <button>
+                    <button
+                      onClick={() => {
+                        console.log(this.state.post)
+                        updatePostInput(this.state.post.content);
+                        updatePostTitle(this.state.post.title);
+                        this.setState({
+                          isEditing: true
+                        });
+                      }}
+                    >
                       <MDBIcon icon="edit" />
                       Edit
                     </button>
@@ -187,16 +283,20 @@ export class PostDetails extends Component {
 }
 
 function mapStateToProps(state) {
-  const { createComment } = state;
+  const { createComment, createInput, createTitle } = state;
 
   return {
-    createComment
+    createComment,
+    createInput,
+    createTitle
     // profile_img
   };
 }
 
 export default connect(mapStateToProps, {
   updateComment,
+  updatePostInput,
+  updatePostTitle,
   updateUserInfo,
   clearState
 })(PostDetails);

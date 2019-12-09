@@ -39,5 +39,29 @@ module.exports = {
       .catch(err => {
         console.log(err);
       });
+  },
+  updatePost(req, res) {
+    // console.log(req.body)
+    // console.log(req.params)
+    const db = req.app.get("db");
+    const { id } = req.params;
+    const { createTitle, createInput } = req.body;
+    
+    db.update_post(createTitle, createInput, id)
+    .then(result => {
+      // console.log(result)
+      res.status(200).send(result)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  },
+  deletePost(req, res) {
+    const db = req.app.get('db');
+    // console.log(req.params.id)
+    db.delete_post(req.params.id)
+    .then(result => {
+        res.status(200).send(result)
+    }).catch(err => console.log(err))
   }
 };

@@ -5,6 +5,7 @@ import Login from "./components/Login-Register/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
 import CreatePost from "./components/Posting/CreatePost";
 import PostDetails from "./components/Posting/PostDetails";
+import Register from "./components/Login-Register/Register";
 
 export default (
   <Switch>
@@ -16,3 +17,4 @@ export default (
     {/* <Route path='/post' component={Post} /> */}
   </Switch>
 );
+

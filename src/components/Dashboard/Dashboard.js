@@ -29,9 +29,9 @@ class Dashboard extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log("1", prevProps);
-    console.log("2", this.props);
-    console.log("3", this.props.location);
+    // console.log("1", prevProps);
+    // console.log("2", this.props);
+    // console.log("3", this.props.location);
     if (this.props.location.state && this.props.location.state.from) {
       // if (this.props.location.state.from === "/CreatePost")
       if (this.props.location.state.from !== prevProps.location.state.from) {

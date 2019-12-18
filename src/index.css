@@ -32,7 +32,6 @@
   );
 }
 
-
 .card {
   /* background-color: rgba(126, 123, 215, 0.568); */
   /* background-color: rgba(231, 14, 14, 0.616); */
@@ -93,5 +92,12 @@ button {
   padding: 0;
   border: none;
   background: none;
+  /* width: 100%; */
 }
 
+.quantity {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+}

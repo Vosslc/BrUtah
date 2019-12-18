@@ -32,11 +32,19 @@ export class PostDetails extends Component {
     this.state = {
       post: {},
       comments: [],
-      isEditing: false
+      isEditing: false,
+      value: 0
       // profile_img
     };
-    // console.log("this is state for comments", this.state.comments);
   }
+  decrease = () => {
+    this.setState({ value: this.state.value - 1 });
+  };
+
+  increase = () => {
+    this.setState({ value: this.state.value + 1 });
+  };
+
   //! ****LIFECYCLE METHODS**** //
   componentDidMount() {
     this.getSelectedPost();
@@ -200,17 +208,19 @@ export class PostDetails extends Component {
 
                   <MDBCardFooter className="footerBar">
                     <div className="def-number-input number-input">
-                      <button>
+                      <button onClick={this.increase}>
                         <MDBIcon icon="arrow-alt-circle-up" />
                       </button>
-                      {/* <input
+                      <br/>
+                      <input
                         className="quantity"
                         name="quantity"
                         value={this.state.value}
                         onChange={() => console.log("change")}
                         type="number"
-                      /> */}
-                      <button>
+                      />
+                      <br/>
+                      <button onClick={this.decrease}>
                         <MDBIcon icon="arrow-alt-circle-down" />
                       </button>
                     </div>

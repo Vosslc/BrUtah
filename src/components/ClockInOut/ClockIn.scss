@@ -1,9 +1,13 @@
-#clock{
-
-
-  .clock-content{
+#clock {
+  .clock-content {
     padding-top: 150px;
   }
+  .clock-current-in-out {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: stretch;
+  }
 }
-
-

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 // import { Link } from "react-router-dom";
 import {
+  MDBCol,
+  MDBRow,
   MDBContainer,
   MDBCard,
   MDBCardBody,
@@ -27,33 +29,52 @@ export class ClockIn extends Component {
     return (
       <div id="clock">
         <div className="clock-content">
-          <MDBContainer>
-            <MDBCard className="shadow-box-example clock-current-in-out">
-              <MDBCardBody>
-                <MDBCardTitle className="post-title">
-                  Current Time
-                  <MDBCardText className="postText" tag="h5">
-                    {" "}
-                    {rightNow}{" "}
-                  </MDBCardText>
-                </MDBCardTitle>
-
-                <MDBCardTitle className="post-title">
-                  Current Time
-                  <MDBCardText className="postText" tag="h5">
-                    {" "}
-                    {rightNow}{" "}
-                  </MDBCardText>
-                </MDBCardTitle>
-                <hr />
-              </MDBCardBody>
-            </MDBCard>
-
-            <MDBCardFooter className="footerBar d-flex justify-content-around">
-              <MDBBtn color="dark-green">Clock-In</MDBBtn>
-              <MDBBtn color="warning">Clock-Out</MDBBtn>
-            </MDBCardFooter>
+          <MDBContainer className="d-flex justify-content-around">
+            <MDBRow>
+              {/* CURRENT-TIME */}
+              <MDBCol>
+                <MDBCard className="clock-current-card">
+                  <MDBCardBody className="clock-current-body">
+                    <div className="current-time">
+                      <MDBCardTitle>Current Time:</MDBCardTitle>
+                      <MDBCardText tag="h5"> {rightNow} </MDBCardText>
+                    </div>
+                  </MDBCardBody>
+                </MDBCard>
+              </MDBCol>
+              {/*-----*/}
+              {/* CLOCK-IN */}
+              <MDBCol>
+                <MDBCard className=" clock-in-card">
+                  <MDBCardBody className="clock-in-body">
+                    <div className="clock-in">
+                      <MDBCardTitle>Clocked In:</MDBCardTitle>
+                      <MDBCardText tag="h5"> {rightNow} </MDBCardText>
+                    </div>
+                  </MDBCardBody>
+                </MDBCard>
+              </MDBCol>
+              {/*-----*/}
+              {/* CLOCK-OUT */}
+              <MDBCol>
+                <MDBCard className=" clock-out-card">
+                  <MDBCardBody className="clock-clock-out-body">
+                    <div className="clock-out">
+                      <MDBCardTitle>Clocked out:</MDBCardTitle>
+                      <MDBCardText tag="h5"> {rightNow} </MDBCardText>
+                    </div>
+                  </MDBCardBody>
+                </MDBCard>
+              </MDBCol>
+              {/*-----*/}
+            </MDBRow>
           </MDBContainer>
+          {/* FOOTER */}
+
+          <div className="d-flex justify-content-center btns-in-out">
+            <MDBBtn color="dark-green">Clock-In</MDBBtn>
+            <MDBBtn color="warning">Clock-Out</MDBBtn>
+          </div>
         </div>
       </div>
     );

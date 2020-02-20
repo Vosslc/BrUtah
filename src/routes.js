@@ -7,6 +7,7 @@ import CreatePost from "./components/Posting/CreatePost";
 import PostDetails from "./components/Posting/PostDetails";
 // import Register from "./components/Login-Register/Register";
 import ClockIn from "./components/ClockInOut/ClockIn.jsx";
+import NpmClockInOut from "./components/ClockInOut/NpmClockInOut"
 
 export default (
   <Switch>
@@ -16,6 +17,7 @@ export default (
     <Route path="/createpost" component={CreatePost} />
     <Route path="/postdetails/:id" component={PostDetails} />
     <Route path="/time" component={ClockIn} />
+    <Route path="/npmtime" component={NpmClockInOut} />
     {/* <Route path='/post' component={Post} /> */}
 
   </Switch>

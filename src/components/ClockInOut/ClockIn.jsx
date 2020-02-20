@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 // import { Link } from "react-router-dom";
 import {
   MDBCol,
@@ -16,16 +16,16 @@ import "./ClockIn.scss";
 
 export class ClockIn extends Component {
   render() {
-    const date = new Date();
-    // const hours = date.getHours();
-    const rightNow = date.toLocaleTimeString();
+  
+  // const date = new Date();
+    // // const hours = date.getHours();
+    // const rightNow = date.toLocaleTimeString();
 
-    function tick() {
-      ReactDOM.render(<ClockIn />, document.getElementById("clock"));
-    }
-    setInterval(tick, 1000);
-    console.log(tick, "tick");
-
+    // function tick() {
+    //   ReactDOM.render(<ClockIn />, document.getElementById("clock"));
+    // }
+    // setInterval(tick, 1000);
+    // console.log(tick, "tick");
     return (
       <div id="clock">
         <div className="clock-content">
@@ -37,7 +37,7 @@ export class ClockIn extends Component {
                   <MDBCardBody className="clock-current-body">
                     <div className="current-time">
                       <MDBCardTitle>Current Time:</MDBCardTitle>
-                      <MDBCardText tag="h5"> {rightNow} </MDBCardText>
+                      {/* <MDBCardText tag="h5"> {rightNow} </MDBCardText> */}
                     </div>
                   </MDBCardBody>
                 </MDBCard>
@@ -49,7 +49,7 @@ export class ClockIn extends Component {
                   <MDBCardBody className="clock-in-body">
                     <div className="clock-in">
                       <MDBCardTitle>Clocked In:</MDBCardTitle>
-                      <MDBCardText tag="h5"> {rightNow} </MDBCardText>
+                      {/* <MDBCardText tag="h5"> {rightNow} </MDBCardText> */}
                     </div>
                   </MDBCardBody>
                 </MDBCard>
@@ -61,7 +61,7 @@ export class ClockIn extends Component {
                   <MDBCardBody className="clock-clock-out-body">
                     <div className="clock-out">
                       <MDBCardTitle>Clocked out:</MDBCardTitle>
-                      <MDBCardText tag="h5"> {rightNow} </MDBCardText>
+                      {/* <MDBCardText tag="h5"> {rightNow} </MDBCardText> */}
                     </div>
                   </MDBCardBody>
                 </MDBCard>

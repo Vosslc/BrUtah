@@ -8,8 +8,8 @@ import {
   MDBCard,
   MDBCardBody,
   MDBCardTitle,
-  MDBCardText,
-  MDBCardFooter,
+  // MDBCardText,
+  // MDBCardFooter,
   MDBBtn
 } from "mdbreact";
 import "./ClockIn.scss";

@@ -1,0 +1,29 @@
+.npm-clock {
+  padding-top: 150px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: stretch;
+	//! For testing/visuals 
+  // border: thick;
+  // border-style: dotted;
+
+  .clock-container {
+    border: thick;
+    border-style: solid;
+	}
+	.clock-content{
+		margin: 20px;
+	}
+
+  .react-datetime-picker__wrapper {
+  }
+  .react-datetime-picker__inputGroup__input {
+    color: red;
+  }
+  .react-datetime-picker__inputGroup__year {
+    color: blue;
+  }
+}

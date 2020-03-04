@@ -1,3 +1,13 @@
+// @import url("https://fonts.googleapis.com/css?family=Anton|Odibee+Sans|Roboto&display=swap")
+
+#npm-clock-view {
+	background-image: url("./images/clock-in-out-mountians.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+}
+
 .npm-clock {
   padding-top: 150px;
   display: flex;
@@ -6,17 +16,23 @@
   justify-content: space-around;
   align-items: center;
   align-content: stretch;
-	//! For testing/visuals 
+  //! For testing/visuals
   // border: thick;
   // border-style: dotted;
+  p {
+    color: black;
+		font-size: x-large;
+		font-weight: bolder;
+		font-family: 'Odibee+Sans';
+  }
 
   .clock-container {
     border: thick;
     border-style: solid;
-	}
-	.clock-content{
-		margin: 20px;
-	}
+  }
+  .clock-content {
+    margin: 20px;
+  }
 
   .react-datetime-picker__wrapper {
   }

@@ -7,6 +7,17 @@ import DateTimePicker from "react-datetime-picker";
 // import DateTimePicker from 'react-datetime-picker/dist/entry.nostyle';
 
 import "./NpmClockInOut.scss";
+import {
+  // MDBCol,
+  // MDBRow,
+  // MDBContainer,
+  // MDBCard,
+  // MDBCardBody,
+  // MDBCardTitle,
+  // MDBCardText,
+  // MDBCardFooter,
+  MDBBtn
+} from "mdbreact";
 
 export class NpmClockInOut extends Component {
   state = {
@@ -21,16 +32,20 @@ export class NpmClockInOut extends Component {
 
   render() {
     return (
-      <div className="npm-clock">
-        <p>Current time:</p>
-        <div className="clock-container">
-          {/* <TimePicker value={this.state.date} /> */}
+      <div id="npm-clock-view">
+        <div className="npm-clock">
+          <p>Current time:</p>
+          <div className="clock-container">
+            {/* <TimePicker value={this.state.date} /> */}
 
-          <DateTimePicker
-            className="clock-content"
-            onChange={this.onChange}
-            value={this.state.date}
-          />
+            <DateTimePicker
+              className="clock-content"
+              onChange={this.onChange}
+              value={this.state.date}
+            />
+            <MDBBtn color="dark-green">Clock-In</MDBBtn>
+            <MDBBtn color="warning">Clock-Out</MDBBtn>
+          </div>
         </div>
       </div>
     );

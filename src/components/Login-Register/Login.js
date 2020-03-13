@@ -1,4 +1,4 @@
-import React from "react";
+ import React from "react";
 import { connect } from "react-redux";
 import { updateUserInfo } from "../../ducks/reducer";
 // import { BrowserRouter as Router } from "react-router-dom";
@@ -20,7 +20,7 @@ import {
 
 import Swal from "sweetalert2";
 
-class Login extends React.Component {
+export class Login extends React.Component {
   state = {
     collapseID: "",
     username: "",
@@ -52,7 +52,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div id="classicformpage">
+      <div data-test="component-login" id="classicformpage">
         <MDBView className="Login">
           <MDBMask className="d-flex justify-content-center align-items-center gradient">
             <MDBContainer>
@@ -100,7 +100,7 @@ class Login extends React.Component {
                           />
                         </form>
                         <div className="text-center mt-4 black-text">
-                          <MDBBtn onClick={this.login} color="indigo">
+                          <MDBBtn data-test="login-button" onClick={this.login} color="indigo">
                             Sign In
                           </MDBBtn>
                           <hr className="hr-light" />
@@ -148,7 +148,7 @@ class Login extends React.Component {
                     Benjamin Franklin
                   </h6>
                   <Link to="/Register">
-                    <MDBBtn outline color="white">
+                    <MDBBtn outline color="white" data-test="register-button">
                       Register
                     </MDBBtn>
                   </Link>

@@ -7,12 +7,13 @@ import axios from "axios";
 import {
   // MDBBtn,
   MDBMask,
-  MDBView
+  MDBView,
+  MDBContainer
 } from "mdbreact";
 import Post from "../Posting/Post";
 import "../Posting/Post.css";
 // import { PostDetails } from "../Posting/PostDetails";
-// import "./Dashboard.css";
+import "./Dashboard.css";
 
 class Dashboard extends Component {
   constructor() {
@@ -64,8 +65,9 @@ class Dashboard extends Component {
     return (
       <div id="dashboardPage">
         <MDBView>
-          <MDBMask className="d-flex flex-column ">
-            <div className="postCard card">
+          <MDBContainer>
+            {/* <MDBMask className="d-flex flex-column "> */}
+            <div className="dashboard-card card">
               <div className="card-body">
                 <Link to="/CreatePost">
                   <input
@@ -86,7 +88,8 @@ class Dashboard extends Component {
                 // remove={this.deletePost}
               />
             ))}
-          </MDBMask>
+            {/* </MDBMask> */}
+          </MDBContainer>
         </MDBView>
       </div>
     );
